@@ -1,0 +1,23 @@
+
+
+/* ================= dashboard.html ================= */
+<!DOCTYPE html>
+<html>
+<head><title>Dashboard</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><h1>📊 Dashboard</h1></header>
+<nav>
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="services.html">Services</a>
+<a href="ai.html">AI</a>
+<a href="dashboard.html">Dashboard</a>
+<a href="contact.html">Contact</a>
+</nav>
+<section class="section">
+<h2>Total Scans: 128</h2>
+<h3>Top Disease: Early Blight</h3>
+<h3>Trend: Increasing</h3>
+</section>
+</body>
+</html>

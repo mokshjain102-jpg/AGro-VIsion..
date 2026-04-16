@@ -1,0 +1,14 @@
+/* ================= style.css ================= */
+body{margin:0;font-family:sans-serif;background:#eef7ee;}
+header{background:#1b5e20;color:white;text-align:center;padding:20px;}
+nav{background:#2e7d32;text-align:center;padding:10px;}
+nav a{color:white;margin:10px;text-decoration:none;}
+.hero{padding:120px;text-align:center;color:white;background:url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6') center/cover;animation:fade 2s;}
+.main-btn{padding:15px 25px;font-size:18px;background:#4caf50;color:white;border:none;border-radius:10px;transition:0.3s;}
+.main-btn:hover{transform:scale(1.1);}
+.features{display:flex;justify-content:space-around;padding:20px;background:white;}
+.section{padding:40px;text-align:center;}
+.card{display:inline-block;margin:10px;padding:20px;background:white;border-radius:10px;transition:0.3s;}
+.card:hover{transform:scale(1.1);background:#c8e6c9;}
+.demo{text-align:center;padding:40px;}
+@keyframes fade{from{opacity:0}to{opacity:1}}

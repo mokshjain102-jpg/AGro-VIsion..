@@ -1,0 +1,42 @@
+/* ================= index.html ================= */
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>AgroVision AI</title>
+<link rel="stylesheet" href="style.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<header><h1>🌱 AgroVision</h1></header>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="services.html">Services</a>
+<a href="ai.html">AI Demo</a>
+<a href="dashboard.html">Dashboard</a>
+<a href="contact.html">Contact</a>
+</nav>
+
+<section class="hero">
+<h1>AI-Powered Crop Disease Detection & Smart Farming Assistant</h1>
+<p>Upload a leaf image and get instant disease diagnosis, treatment, and prevention tips.</p>
+<button class="main-btn" onclick="scrollToDemo()">📸 Scan Your Crop Now</button>
+</section>
+
+<section class="features">
+<div>🌿 Disease Detection</div>
+<div>📊 Severity Analysis</div>
+<div>🌦 Weather Risk Alert</div>
+<div>💊 Smart Treatment</div>
+</section>
+
+<section class="demo" id="demo">
+<h2>Live Demo</h2>
+<input type="file" onchange="fakeAI()">
+<p id="demoResult"></p>
+</section>
+
+</body>
+</html> 

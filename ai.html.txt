@@ -1,0 +1,23 @@
+
+/* ================= ai.html ================= */
+<!DOCTYPE html>
+<html>
+<head><title>AI Demo</title><link rel="stylesheet" href="style.css"><script defer src="script.js"></script></head>
+<body>
+<header><h1>AI Detection System</h1></header>
+<nav>
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="services.html">Services</a>
+<a href="ai.html">AI</a>
+<a href="dashboard.html">Dashboard</a>
+<a href="contact.html">Contact</a>
+</nav>
+<section class="section">
+<input type="file" onchange="fakeAI()">
+<p id="result"></p>
+<p id="confidence"></p>
+<p id="prevention"></p>
+</section>
+</body>
+</html>
