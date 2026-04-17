@@ -1,75 +1,91 @@
-const input = document.getElementById("imageInput");
+*{margin:0;padding:0;box-sizing:border-box;}
 
-input.addEventListener("change", function(e){
-  const file = e.target.files[0];
-  if(!file) return;
-
-  // SHOW IMAGE
-  const img = document.createElement("img");
-  img.src = URL.createObjectURL(file);
-  img.style.width = "150px";
-  img.style.marginTop = "10px";
-
-  const upload = document.querySelector(".upload");
-  upload.innerHTML = "";
-  upload.appendChild(img);
-
-  runAI();
-});
-
-// DATA
-const data = [
-  {
-    crop: "Wheat",
-    disease: "Leaf Rust",
-    cure: "Use fungicide spray",
-    precaution: "Avoid moisture"
-  },
-  {
-    crop: "Rice",
-    disease: "Blast Disease",
-    cure: "Apply Tricyclazole",
-    precaution: "Control irrigation"
-  },
-  {
-    crop: "Tomato",
-    disease: "Early Blight",
-    cure: "Use copper fungicide",
-    precaution: "Rotate crops"
-  }
-];
-
-function runAI(){
-
-  document.getElementById("crop").innerText = "Analyzing...";
-  document.getElementById("disease").innerText = "Scanning...";
-  document.getElementById("cure").innerText = "Processing...";
-
-  setTimeout(()=>{
-
-    let item = data[Math.floor(Math.random()*data.length)];
-
-    document.getElementById("crop").innerText = item.crop;
-    document.getElementById("disease").innerText = item.disease;
-    document.getElementById("cure").innerText = item.cure;
-
-    updateInsights(item);
-    updateHistory(item);
-
-  },1500);
+body{
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:white;
 }
 
-function updateInsights(item){
-  document.getElementById("insights").innerHTML = `
-    <li>🌱 Health: Moderate</li>
-    <li>🦠 Disease: ${item.disease}</li>
-    <li>⚠ Precaution: ${item.precaution}</li>
-    <li>📈 Impact: Medium</li>
-  `;
+/* NAV */
+.nav{
+  display:flex;
+  justify-content:space-between;
+  padding:15px 40px;
+  background:rgba(0,0,0,0.6);
 }
 
-function updateHistory(item){
-  const li = document.createElement("li");
-  li.innerText = item.crop + " - " + item.disease;
-  document.getElementById("history").appendChild(li);
+nav a{
+  margin:0 10px;
+  color:white;
+  text-decoration:none;
+}
+
+/* HERO */
+.hero{
+  height:90vh;
+  background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.3)),
+  url('https://images.unsplash.com/photo-1500382017468-9049fed747ef') center/cover;
+  display:flex;
+  align-items:center;
+  padding-left:60px;
+}
+
+.hero h1{font-size:80px;}
+
+.scan-btn{
+  margin-top:20px;
+  padding:12px 30px;
+  background:#00cc66;
+  border:none;
+  border-radius:30px;
+  color:white;
+}
+
+/* STATS */
+.stats{
+  display:flex;
+  justify-content:space-around;
+  background:rgba(0,0,0,0.8);
+  padding:20px;
+}
+
+/* DASHBOARD */
+.dashboard{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+  padding:40px;
+}
+
+.card{
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(12px);
+  padding:20px;
+  border-radius:10px;
+}
+
+.big{grid-column:span 2;}
+
+.upload{
+  border:2px dashed #00ffcc;
+  padding:30px;
+  text-align:center;
+  cursor:pointer;
+}
+
+/* CHAT */
+.chat-box{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:300px;
+  background:rgba(0,0,0,0.8);
+  padding:15px;
+  border-radius:10px;
+}
+
+#chatMessages{
+  height:150px;
+  overflow:auto;
+  margin-bottom:10px;
 }
