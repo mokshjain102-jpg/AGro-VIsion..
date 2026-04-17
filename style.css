@@ -1,131 +1,89 @@
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  color: white;
-  overflow-x: hidden;
 }
 
-/* Animated background */
-.bg {
-  position: fixed;
+/* HERO */
+.hero {
+  height: 100vh;
+  background: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef') center/cover;
+  position: relative;
+  color: white;
+  text-align: center;
+}
+
+.overlay {
+  position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(270deg, #0f2027, #2c5364, #00c9ff);
-  background-size: 600% 600%;
-  animation: gradientMove 10s ease infinite;
-  z-index: -1;
+  background: rgba(0,0,0,0.6);
 }
 
-@keyframes gradientMove {
-  0% {background-position: 0%}
-  50% {background-position: 100%}
-  100% {background-position: 0%}
+.big {
+  font-size: 80px;
+  position: relative;
+  top: 30%;
+  color: #7CFC00;
 }
 
-/* Navbar */
-header {
+/* Stats */
+.stats {
+  position: absolute;
+  bottom: 50px;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-  padding: 20px 40px;
+  justify-content: center;
+  gap: 40px;
 }
 
-nav a {
-  margin: 15px;
-  text-decoration: none;
-  color: white;
-  transition: 0.3s;
+.stats div {
+  background: black;
+  padding: 20px;
 }
 
-nav a:hover {
-  color: #00ffd5;
+.highlight {
+  background: #7CFC00 !important;
+  color: black;
 }
 
-/* Hero */
-.hero {
+/* Sections */
+section {
+  padding: 60px;
   text-align: center;
-  padding: 80px;
 }
 
-.title {
-  font-size: 50px;
-  animation: float 3s ease-in-out infinite;
+/* AI */
+.upload-box {
+  border: 2px dashed black;
+  padding: 30px;
+  margin: auto;
+  width: 300px;
 }
 
-@keyframes float {
-  0%,100% {transform: translateY(0);}
-  50% {transform: translateY(-10px);}
-}
-
-.search {
-  padding: 15px;
-  width: 350px;
-  border-radius: 30px;
-  border: none;
+#preview {
+  width: 200px;
   margin-top: 20px;
 }
 
-/* Upload Card */
-.upload-card {
-  margin-top: 30px;
-  padding: 30px;
-  border-radius: 20px;
-  backdrop-filter: blur(15px);
-  background: rgba(255,255,255,0.1);
-  display: inline-block;
+/* Vision */
+.vision {
+  display: flex;
+  justify-content: space-around;
 }
 
-.upload-card button {
-  margin-top: 10px;
-  padding: 10px 25px;
-  border-radius: 20px;
-  border: none;
-  background: #00ffd5;
-  cursor: pointer;
-}
-
-/* Image preview */
-#preview {
-  display: block;
-  width: 200px;
-  margin: 20px auto;
-  border-radius: 15px;
-}
-
-/* Dashboard */
-.dashboard {
-  text-align: center;
-  padding: 50px;
-}
-
-.grid {
+/* Team */
+.members {
   display: flex;
   justify-content: center;
   gap: 30px;
 }
 
-.box {
-  padding: 30px;
-  width: 220px;
-  border-radius: 20px;
-  backdrop-filter: blur(20px);
-  background: rgba(255,255,255,0.1);
-  transition: 0.3s;
+.member img {
+  border-radius: 10px;
 }
 
-.box:hover {
-  transform: scale(1.05);
+/* Contact */
+.contact {
+  background: black;
+  color: white;
 }
-
-/* Glow effect */
-.glow {
-  box-shadow: 0 0 20px #00ffd5;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 20px;
-}
-
-
-
