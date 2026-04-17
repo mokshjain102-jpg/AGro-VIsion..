@@ -6,62 +6,65 @@
 <title>AgroVision AI</title>
 
 <link rel="stylesheet" href="style.css">
-
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-</head>
 
+</head>
 <body>
 
-<div id="particles-js"></div>
-
 <nav>
-<h2>🌿 AgroVision</h2>
-<div>
-<a href="#">Home</a>
-<a href="#scan">Scan</a>
-<a href="#dash">Dashboard</a>
-</div>
+  <h2>🌿 AgroVision</h2>
+  <div>
+    <a href="#">Home</a>
+    <a href="#scan">Scan</a>
+    <a href="#dash">Dashboard</a>
+  </div>
 </nav>
 
-<section class="hero">
-<h1>AI Crop Disease Detection</h1>
-<p>Smart Farming Assistant</p>
-<button onclick="scrollToScan()">Scan Crop</button>
+<!-- PARALLAX -->
+<section class="parallax">
+  <div class="overlay"></div>
+  <div class="hero">
+    <h1>AI Crop Detection</h1>
+    <p>Smart Farming Assistant</p>
+    <button onclick="scrollToScan()">Scan Now</button>
+  </div>
 </section>
 
+<!-- FEATURES -->
 <section class="features">
-<div class="card" data-aos="zoom-in">🌿 Detection</div>
-<div class="card" data-aos="zoom-in">📊 Severity</div>
-<div class="card" data-aos="zoom-in">🌦 Weather</div>
-<div class="card" data-aos="zoom-in">💊 Treatment</div>
+  <div class="card">🌿 Disease Detection</div>
+  <div class="card">📊 Severity</div>
+  <div class="card">🌦 Weather Risk</div>
+  <div class="card">💊 Treatment</div>
 </section>
 
+<!-- WEATHER -->
 <section class="weather">
-<h2>Live Weather</h2>
-<div id="weather">Loading...</div>
+  <h2>Live Weather</h2>
+  <div id="weather">Loading...</div>
 </section>
 
-<section class="upload" id="scan">
-<h2>Upload Crop Image</h2>
-<input type="file" id="fileInput">
-<button onclick="analyze()">Analyze</button>
-<div id="output" class="result"></div>
+<!-- SCAN -->
+<section id="scan" class="upload">
+  <h2>Upload Crop Image</h2>
+  <input type="file" id="fileInput">
+  <button onclick="analyze()">Analyze</button>
+  <div id="output"></div>
 </section>
 
+<!-- DASHBOARD -->
 <section id="dash">
-<h2>Dashboard</h2>
-<canvas id="chart"></canvas>
+  <h2>Dashboard</h2>
+  <canvas id="chart"></canvas>
 </section>
 
-<div id="chatbot">
-<div id="chat-header">AI Assistant</div>
-<div id="chat-body"></div>
-<div id="chat-input">
-<input id="msg">
-<button onclick="sendMsg()">Send</button>
-</div>
+<!-- CHAT -->
+<div id="chatbox">
+  <div id="chatMessages"></div>
+  <input id="userInput" placeholder="Ask about crops...">
+  <button onclick="sendMessage()">Send</button>
+  <button onclick="startVoice()">🎤</button>
 </div>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
