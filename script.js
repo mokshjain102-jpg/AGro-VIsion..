@@ -51,7 +51,9 @@ function simulateAI(){
     document.getElementById("crop").innerText = item.crop;
     document.getElementById("disease").innerText = item.disease;
     document.getElementById("cure").innerText = item.cure;
-
+document.querySelector(".ai-btn").addEventListener("click", () => {
+  alert("🤖 AI Assistant coming soon...");
+});
     addInsights(item);
     addHistory(item);
 
