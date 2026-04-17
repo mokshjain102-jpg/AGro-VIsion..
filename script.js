@@ -1,13 +1,21 @@
+const dropZone = document.getElementById("dropZone");
+
+dropZone.addEventListener("click", () => {
+  document.getElementById("imageInput").click();
+});
+
+dropZone.addEventListener("drop", (e) => {
+  e.preventDefault();
+  document.getElementById("imageInput").files = e.dataTransfer.files;
+  preview(e.dataTransfer.files[0]);
+});
+
+function preview(file) {
+  document.getElementById("preview").src = URL.createObjectURL(file);
+}
+
 function uploadImage() {
   let file = document.getElementById("imageInput").files[0];
-
-  if (!file) {
-    alert("Upload image first!");
-    return;
-  }
-
-  // preview
-  document.getElementById("preview").src = URL.createObjectURL(file);
 
   let formData = new FormData();
   formData.append("file", file);
@@ -21,6 +29,5 @@ function uploadImage() {
     document.getElementById("crop").innerText = data.crop;
     document.getElementById("disease").innerText = data.disease;
     document.getElementById("cure").innerText = data.cure;
-  })
-  .catch(err => console.log(err));
+  });
 }
