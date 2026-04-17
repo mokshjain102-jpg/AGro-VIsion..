@@ -1,94 +1,112 @@
-const crops = [
-  {
-    name: "Wheat",
-    diseases: [
-      {
-        name: "Leaf Rust",
-        cure: "Apply fungicide like Propiconazole",
-        precaution: "Avoid excess moisture"
-      },
-      {
-        name: "Powdery Mildew",
-        cure: "Use sulfur-based spray",
-        precaution: "Ensure proper air circulation"
-      }
-    ]
-  },
-  {
-    name: "Rice",
-    diseases: [
-      {
-        name: "Blast Disease",
-        cure: "Use Tricyclazole fungicide",
-        precaution: "Avoid overwatering"
-      },
-      {
-        name: "Brown Spot",
-        cure: "Apply balanced fertilizer",
-        precaution: "Maintain soil nutrients"
-      }
-    ]
-  },
-  {
-    name: "Tomato",
-    diseases: [
-      {
-        name: "Early Blight",
-        cure: "Use copper fungicide",
-        precaution: "Rotate crops regularly"
-      },
-      {
-        name: "Late Blight",
-        cure: "Apply Mancozeb spray",
-        precaution: "Avoid wet leaves"
-      }
-    ]
-  }
-];
+const imageInput = document.getElementById("imageInput");
 
-document.getElementById("imageInput").addEventListener("change", function(e){
+// SOUND EFFECT (OPTIONAL)
+function clickSound() {
+  let audio = new Audio("https://www.fesliyanstudios.com/play-mp3/387");
+  audio.play();
+}
+
+// BUTTON CLICK FEEDBACK
+document.querySelectorAll("button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    clickSound();
+    btn.style.transform = "scale(0.9)";
+    setTimeout(() => btn.style.transform = "scale(1)", 150);
+  });
+});
+
+// IMAGE UPLOAD + PREVIEW
+imageInput.addEventListener("change", function(e){
   let file = e.target.files[0];
 
-  document.getElementById("preview").src = URL.createObjectURL(file);
+  if (!file) return;
+
+  // preview image
+  let img = document.createElement("img");
+  img.id = "preview";
+  img.src = URL.createObjectURL(file);
+
+  let uploadBox = document.querySelector(".upload");
+  uploadBox.innerHTML = "";
+  uploadBox.appendChild(img);
 
   simulateAI();
 });
 
+// DRAG DROP
+const upload = document.querySelector(".upload");
+
+upload.addEventListener("dragover", (e) => {
+  e.preventDefault();
+  upload.style.background = "rgba(0,255,204,0.2)";
+});
+
+upload.addEventListener("dragleave", () => {
+  upload.style.background = "transparent";
+});
+
+upload.addEventListener("drop", (e) => {
+  e.preventDefault();
+  let file = e.dataTransfer.files[0];
+  imageInput.files = e.dataTransfer.files;
+
+  let img = document.createElement("img");
+  img.id = "preview";
+  img.src = URL.createObjectURL(file);
+
+  upload.innerHTML = "";
+  upload.appendChild(img);
+
+  simulateAI();
+});
+
+// FAKE AI SIMULATION (REAL FEEL)
 function simulateAI() {
 
-  // loading animation
-  document.getElementById("crop").innerText = "Analyzing...";
-  document.getElementById("disease").innerText = "Scanning...";
-  document.getElementById("cure").innerText = "Processing...";
+  document.getElementById("crop").innerText = "🔍 Scanning...";
+  document.getElementById("disease").innerText = "🧠 AI analyzing...";
+  document.getElementById("cure").innerText = "⚙ Processing...";
 
   setTimeout(() => {
 
-    let crop = crops[Math.floor(Math.random() * crops.length)];
-    let disease = crop.diseases[Math.floor(Math.random() * crop.diseases.length)];
+    let crops = ["Wheat", "Rice", "Tomato", "Corn"];
+    let diseases = ["Leaf Rust", "Blight", "Powdery Mildew", "Healthy"];
+    let cures = [
+      "Apply fungicide spray",
+      "Improve irrigation",
+      "Use organic treatment",
+      "No action needed"
+    ];
 
-    document.getElementById("crop").innerText = crop.name;
-    document.getElementById("disease").innerText = disease.name;
-    document.getElementById("cure").innerText = disease.cure;
+    let c = crops[Math.floor(Math.random()*crops.length)];
+    let d = diseases[Math.floor(Math.random()*diseases.length)];
+    let cure = cures[Math.floor(Math.random()*cures.length)];
 
-    addInsights(crop, disease);
-    addHistory(crop, disease);
+    document.getElementById("crop").innerText = c;
+    document.getElementById("disease").innerText = d;
+    document.getElementById("cure").innerText = cure;
+
+    addHistory(c, d);
+    addInsights(d);
 
   }, 2000);
 }
 
-function addInsights(crop, disease) {
+// HISTORY
+function addHistory(crop, disease){
+  let li = document.createElement("li");
+  li.innerText = crop + " - " + disease;
+  document.getElementById("history").appendChild(li);
+}
+
+// INSIGHTS
+function addInsights(disease){
   let insights = document.getElementById("insights");
 
   insights.innerHTML = `
-    <div class="box">🌱 Crop Health: Moderate</div>
-    <div class="box">🦠 Risk Level: Medium</div>
-    <div class="box">💊 Suggestion: ${disease.precaution}</div>
-    <div class="box">📈 Yield Impact: 15-25%</div>
+    <li>🌱 Crop Health: Moderate</li>
+    <li>🦠 Risk: ${disease}</li>
+    <li>📊 Yield Impact: 10-20%</li>
+    <li>💡 Suggestion: Monitor regularly</li>
   `;
-}
-
-function addHistory(crop, disease) {
-  let li = document.createElement("li");
-  li.innerText = `${crop.name} - ${disease.name}`;
-  document.getElementById("history").appendChild(li);
 }
