@@ -1,112 +1,111 @@
-const imageInput = document.getElementById("imageInput");
-
-// SOUND EFFECT (OPTIONAL)
-function clickSound() {
-  let audio = new Audio("https://www.fesliyanstudios.com/play-mp3/387");
-  audio.play();
+/* FULL RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-// BUTTON CLICK FEEDBACK
-document.querySelectorAll("button").forEach(btn => {
-  btn.addEventListener("click", () => {
-    clickSound();
-    btn.style.transform = "scale(0.9)";
-    setTimeout(() => btn.style.transform = "scale(1)", 150);
-  });
-});
-
-// IMAGE UPLOAD + PREVIEW
-imageInput.addEventListener("change", function(e){
-  let file = e.target.files[0];
-
-  if (!file) return;
-
-  // preview image
-  let img = document.createElement("img");
-  img.id = "preview";
-  img.src = URL.createObjectURL(file);
-
-  let uploadBox = document.querySelector(".upload");
-  uploadBox.innerHTML = "";
-  uploadBox.appendChild(img);
-
-  simulateAI();
-});
-
-// DRAG DROP
-const upload = document.querySelector(".upload");
-
-upload.addEventListener("dragover", (e) => {
-  e.preventDefault();
-  upload.style.background = "rgba(0,255,204,0.2)";
-});
-
-upload.addEventListener("dragleave", () => {
-  upload.style.background = "transparent";
-});
-
-upload.addEventListener("drop", (e) => {
-  e.preventDefault();
-  let file = e.dataTransfer.files[0];
-  imageInput.files = e.dataTransfer.files;
-
-  let img = document.createElement("img");
-  img.id = "preview";
-  img.src = URL.createObjectURL(file);
-
-  upload.innerHTML = "";
-  upload.appendChild(img);
-
-  simulateAI();
-});
-
-// FAKE AI SIMULATION (REAL FEEL)
-function simulateAI() {
-
-  document.getElementById("crop").innerText = "🔍 Scanning...";
-  document.getElementById("disease").innerText = "🧠 AI analyzing...";
-  document.getElementById("cure").innerText = "⚙ Processing...";
-
-  setTimeout(() => {
-
-    let crops = ["Wheat", "Rice", "Tomato", "Corn"];
-    let diseases = ["Leaf Rust", "Blight", "Powdery Mildew", "Healthy"];
-    let cures = [
-      "Apply fungicide spray",
-      "Improve irrigation",
-      "Use organic treatment",
-      "No action needed"
-    ];
-
-    let c = crops[Math.floor(Math.random()*crops.length)];
-    let d = diseases[Math.floor(Math.random()*diseases.length)];
-    let cure = cures[Math.floor(Math.random()*cures.length)];
-
-    document.getElementById("crop").innerText = c;
-    document.getElementById("disease").innerText = d;
-    document.getElementById("cure").innerText = cure;
-
-    addHistory(c, d);
-    addInsights(d);
-
-  }, 2000);
+/* BODY FIX */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #0f2027;
+  color: white;
+  overflow-x: hidden;
 }
 
-// HISTORY
-function addHistory(crop, disease){
-  let li = document.createElement("li");
-  li.innerText = crop + " - " + disease;
-  document.getElementById("history").appendChild(li);
+/* REMOVE WHITE SIDE SPACE */
+html, body {
+  width: 100%;
 }
 
-// INSIGHTS
-function addInsights(disease){
-  let insights = document.getElementById("insights");
+/* NAV */
+.nav {
+  width: 100%;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  background: rgba(0,0,0,0.7);
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
 
-  insights.innerHTML = `
-    <li>🌱 Crop Health: Moderate</li>
-    <li>🦠 Risk: ${disease}</li>
-    <li>📊 Yield Impact: 10-20%</li>
-    <li>💡 Suggestion: Monitor regularly</li>
-  `;
+/* HERO FULL WIDTH */
+.hero {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)),
+  url('https://images.unsplash.com/photo-1500382017468-9049fed747ef') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  padding-left: 60px;
+}
+
+/* HERO TEXT */
+.hero h1 {
+  font-size: 90px;
+}
+
+/* STATS FIX */
+.stats {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  background: rgba(0,0,0,0.8);
+  padding: 20px;
+  font-weight: bold;
+}
+
+/* DASHBOARD */
+.dashboard {
+  padding: 60px;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 20px;
+}
+
+/* CARDS FIX */
+.card {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  padding: 20px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 20px #00ffcc;
+}
+
+/* BIG CARD */
+.large {
+  grid-column: span 2;
+}
+
+/* UPLOAD BOX */
+.upload {
+  border: 2px dashed #00ffcc;
+  padding: 25px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+/* FEATURES */
+.features {
+  padding: 60px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 20px;
+}
+
+/* REMOVE WHITE FROM BOTTOM */
+.bottom {
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  gap: 20px;
+  padding: 40px;
 }
