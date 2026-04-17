@@ -14,8 +14,10 @@
   <h2>🌿 AgroVision</h2>
   <div>
     <a href="#">Home</a>
+    <a href="#insights">Insights</a>
     <a href="#scan">Scan</a>
     <a href="#dash">Dashboard</a>
+    <a href="#history">History</a>
     <a href="chat.html">AI Assistant</a>
   </div>
 </nav>
@@ -27,8 +29,19 @@
     <h1>Smart Farming AI</h1>
     <p>Detect crop disease instantly</p>
     <button onclick="scrollToScan()">Scan Crop</button>
+
+    <div class="hero-stats">
+      <span>🌿 10K+ Scans</span>
+      <span>⚡ 95% Accuracy</span>
+      <span>🌎 Farmers Trust Us</span>
+    </div>
   </div>
 </section>
+
+<!-- FLOATING WEATHER -->
+<div class="floating-weather" id="weather">
+  Loading weather...
+</div>
 
 <!-- FEATURES -->
 <section class="features">
@@ -38,10 +51,24 @@
   <div class="card">💊 Smart Treatment</div>
 </section>
 
-<!-- WEATHER -->
-<section class="weather">
-  <h2>Live Weather Risk</h2>
-  <div id="weather"></div>
+<!-- HOW IT WORKS -->
+<section id="insights" class="steps">
+  <h2>How It Works</h2>
+
+  <div class="step">📸 Upload Crop Image</div>
+  <div class="step">🧠 AI Detects Disease</div>
+  <div class="step">💊 Get Treatment & Cure</div>
+</section>
+
+<!-- PREVENTION -->
+<section class="tips">
+  <h2>Prevention Tips</h2>
+  <ul>
+    <li>🌱 Avoid overwatering crops</li>
+    <li>🌿 Use crop rotation techniques</li>
+    <li>☀️ Ensure proper sunlight exposure</li>
+    <li>💧 Maintain balanced humidity levels</li>
+  </ul>
 </section>
 
 <!-- SCAN -->
@@ -78,6 +105,23 @@
     </div>
   </div>
 
+  <!-- PROGRESS BAR -->
+  <div class="progress-box">
+    <h3>Disease Spread</h3>
+    <div class="bar">
+      <div class="fill" style="width:70%"></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- HISTORY -->
+<section id="history" class="history">
+  <h2>Recent Scan History</h2>
+
+  <div class="history-item">🌿 Leaf Blight - 92%</div>
+  <div class="history-item">🌿 Healthy Crop</div>
+  <div class="history-item">🌿 Rust Disease - 85%</div>
 </section>
 
 <script src="script.js"></script>
