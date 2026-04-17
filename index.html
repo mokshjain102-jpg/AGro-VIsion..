@@ -7,9 +7,30 @@
 
 <link rel="stylesheet" href="style.css">
 
+<!-- AOS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<!-- Particles -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
 </head>
+
 <body>
 
+<!-- CURSOR -->
+<div class="cursor"></div>
+
+<!-- PARTICLES -->
+<div id="particles-js"></div>
+
+<!-- TOP PANEL -->
+<div class="top-panel">
+  <div>🌦 <span id="weatherMini">Loading...</span></div>
+  <div>📊 AI Status: Active</div>
+  <div>🤖 Accuracy: 95%</div>
+</div>
+
+<!-- NAV -->
 <nav>
   <h2>🌿 AgroVision</h2>
   <div>
@@ -22,18 +43,22 @@
   </div>
 </nav>
 
-<!-- PARALLAX -->
-  <div class="search-box">
-  <input type="text" id="searchInput" placeholder="Search crops, diseases, weather, solutions...">
+<!-- SEARCH -->
+<div class="search-box">
+  <input type="text" id="searchInput" placeholder="Search crops, diseases...">
   <button onclick="handleSearch()">🔍</button>
 </div>
 
 <div id="searchResult"></div>
+
+<!-- PARALLAX HERO -->
 <section class="parallax">
   <div class="overlay"></div>
+
   <div class="hero">
-    <h1>Smart Farming AI</h1>
-    <p>Detect crop disease instantly</p>
+    <h1 data-aos="fade-up">Smart Farming AI</h1>
+    <p data-aos="fade-up">Detect crop disease instantly</p>
+
     <button onclick="scrollToScan()">Scan Crop</button>
 
     <div class="hero-stats">
@@ -44,36 +69,36 @@
   </div>
 </section>
 
-<!-- FLOATING WEATHER -->
+<!-- WEATHER FLOAT -->
 <div class="floating-weather" id="weather">
   Loading weather...
 </div>
 
 <!-- FEATURES -->
 <section class="features">
-  <div class="card">🌿 Disease Detection</div>
-  <div class="card">📊 Severity Analysis</div>
-  <div class="card">🌦 Weather Risk</div>
-  <div class="card">💊 Smart Treatment</div>
+  <div class="card" data-aos="zoom-in">🌿 Disease Detection</div>
+  <div class="card" data-aos="zoom-in">📊 Severity Analysis</div>
+  <div class="card" data-aos="zoom-in">🌦 Weather Risk</div>
+  <div class="card" data-aos="zoom-in">💊 Smart Treatment</div>
 </section>
 
 <!-- HOW IT WORKS -->
 <section id="insights" class="steps">
-  <h2>How It Works</h2>
+  <h2 data-aos="fade-up">How It Works</h2>
 
   <div class="step">📸 Upload Crop Image</div>
   <div class="step">🧠 AI Detects Disease</div>
-  <div class="step">💊 Get Treatment & Cure</div>
+  <div class="step">💊 Get Treatment</div>
 </section>
 
-<!-- PREVENTION -->
+<!-- TIPS -->
 <section class="tips">
   <h2>Prevention Tips</h2>
   <ul>
-    <li>🌱 Avoid overwatering crops</li>
-    <li>🌿 Use crop rotation techniques</li>
-    <li>☀️ Ensure proper sunlight exposure</li>
-    <li>💧 Maintain balanced humidity levels</li>
+    <li>🌱 Avoid overwatering</li>
+    <li>🌿 Crop rotation</li>
+    <li>☀️ Proper sunlight</li>
+    <li>💧 Balanced humidity</li>
   </ul>
 </section>
 
@@ -87,49 +112,31 @@
 
 <!-- DASHBOARD -->
 <section id="dash" class="dashboard">
-  <h2>Farm Insights Dashboard</h2>
+  <h2>Farm Insights</h2>
 
   <div class="dash-grid">
-    <div class="dash-card">
-      <h3>Total Scans</h3>
-      <p id="scanCount">120</p>
-    </div>
-
-    <div class="dash-card">
-      <h3>Diseases Found</h3>
-      <p id="diseaseCount">45</p>
-    </div>
-
-    <div class="dash-card">
-      <h3>Healthy Crops</h3>
-      <p id="healthyCount">75</p>
-    </div>
-
-    <div class="dash-card">
-      <h3>High Risk Alerts</h3>
-      <p id="riskCount">12</p>
-    </div>
+    <div class="dash-card"><h3>Total Scans</h3><p id="scanCount">120</p></div>
+    <div class="dash-card"><h3>Diseases</h3><p id="diseaseCount">45</p></div>
+    <div class="dash-card"><h3>Healthy</h3><p id="healthyCount">75</p></div>
+    <div class="dash-card"><h3>Risk</h3><p id="riskCount">12</p></div>
   </div>
 
-  <!-- PROGRESS BAR -->
   <div class="progress-box">
     <h3>Disease Spread</h3>
-    <div class="bar">
-      <div class="fill" style="width:70%"></div>
-    </div>
+    <div class="bar"><div class="fill"></div></div>
   </div>
-
 </section>
 
 <!-- HISTORY -->
 <section id="history" class="history">
-  <h2>Recent Scan History</h2>
-
+  <h2>Scan History</h2>
   <div class="history-item">🌿 Leaf Blight - 92%</div>
   <div class="history-item">🌿 Healthy Crop</div>
   <div class="history-item">🌿 Rust Disease - 85%</div>
 </section>
 
+<!-- SCRIPTS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="script.js"></script>
 
 </body>
