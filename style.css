@@ -1,48 +1,78 @@
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: #f5f7f6;
+  background: #f4f7f6;
 }
 
 /* NAV */
-.navbar {
+.nav {
   display: flex;
   justify-content: space-between;
-  padding: 20px 40px;
+  padding: 20px 50px;
+  background: white;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 800;
+  color: #1f7a4c;
+}
+
+nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.ai-btn {
+  background: #1f7a4c;
+  color: white;
+  border-radius: 20px;
+  padding: 8px 20px;
+  border: none;
 }
 
 /* HERO */
 .hero {
-  height: 80vh;
-  background: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef') center/cover;
+  height: 75vh;
+  background: linear-gradient(rgba(0,100,0,0.6), rgba(0,0,0,0.3)),
+  url('https://images.unsplash.com/photo-1500382017468-9049fed747ef') center/cover;
   display: flex;
   align-items: center;
   padding-left: 60px;
   color: white;
 }
 
-.hero-content h1 {
+.hero-left h1 {
   font-size: 70px;
 }
 
-.scan-btn {
-  padding: 15px 30px;
-  background: green;
-  border: none;
-  color: white;
+.hero-actions button {
+  margin-right: 10px;
+  padding: 12px 25px;
   border-radius: 30px;
+  border: none;
+}
+
+.scan-btn {
+  background: #00cc66;
+  color: white;
+}
+
+.demo-btn {
+  background: white;
 }
 
 /* STATS */
 .stats {
   display: flex;
   justify-content: space-around;
-  background: #e8f5e9;
+  background: #e6f4ea;
   padding: 20px;
 }
 
-/* CARDS */
-.cards-section {
+/* DASHBOARD */
+.dashboard {
   display: grid;
   grid-template-columns: repeat(4,1fr);
   gap: 20px;
@@ -52,16 +82,23 @@ body {
 .card {
   background: white;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 12px;
 }
 
-.big {
+.large {
   grid-column: span 2;
+}
+
+.upload {
+  border: 2px dashed #ccc;
+  padding: 30px;
+  margin: 10px 0;
 }
 
 /* FEATURES */
 .features {
   padding: 40px;
+  text-align: center;
 }
 
 .grid {
@@ -76,9 +113,15 @@ body {
   border-radius: 10px;
 }
 
-/* CONTACT */
-.contact {
-  background: green;
-  color: white;
-  padding: 30px;
+/* BOTTOM */
+.bottom {
+  display: flex;
+  gap: 20px;
+  padding: 40px;
+}
+
+.about, .contact {
+  flex: 1;
+  background: white;
+  padding: 20px;
 }
