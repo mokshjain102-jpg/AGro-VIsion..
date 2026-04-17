@@ -57,12 +57,22 @@
 <!-- DASHBOARD -->
 <section class="dashboard">
 
-  <div class="card large">
-    <h3>AI Prediction</h3>
+ <div class="card large">
+  <h3>AI Prediction</h3>
 
-    <div class="upload">
-      Drag & Drop Image
-    </div>
+  <!-- CLICKABLE UPLOAD -->
+  <div class="upload" onclick="document.getElementById('imageInput').click()">
+    <p>📸 Click or Drag Image Here</p>
+    <input type="file" id="imageInput" hidden>
+  </div>
+
+  <!-- RESULT -->
+  <div class="result">
+    <p>Crop: <span id="crop">--</span></p>
+    <p>Disease: <span id="disease">--</span></p>
+    <p>Cure: <span id="cure">--</span></p>
+  </div>
+</div>
 
     <div class="result">
       <p>Crop: <span id="crop">--</span></p>
