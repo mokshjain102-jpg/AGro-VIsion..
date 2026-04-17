@@ -8,14 +8,10 @@
 <link rel="stylesheet" href="style.css">
 
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 
 </head>
 
 <body>
-
-<!-- PARTICLES -->
-<div id="particles-js"></div>
 
 <!-- TOP PANEL -->
 <div class="top-panel">
@@ -28,7 +24,7 @@
 <nav>
   <h2>🌿 AgroVision</h2>
   <div>
-    <a href="#">Home</a>
+    <a href="#hero">Home</a>
     <a href="#insights">Insights</a>
     <a href="#scan">Scan</a>
     <a href="#dash">Dashboard</a>
@@ -37,67 +33,132 @@
 </nav>
 
 <!-- HERO -->
-<section class="parallax">
-  <div class="overlay"></div>
+<section id="hero" class="hero-section">
 
-  <div class="hero">
-    <h1 data-aos="fade-up">Smart Farming AI</h1>
-    <p data-aos="fade-up">Detect crop disease instantly</p>
-    <button onclick="scrollToScan()">Scan Crop</button>
+  <div class="hero-content" data-aos="fade-up">
+
+    <h1>AI-Powered Crop Intelligence</h1>
+    <p>Detect diseases early, reduce losses, and maximize yield using AI.</p>
+
+    <button onclick="scrollToScan()">📸 Scan Crop</button>
 
     <div class="hero-stats">
       <span>🌿 10K+ Scans</span>
       <span>⚡ 95% Accuracy</span>
-      <span>🌎 Farmers Trust Us</span>
+      <span>🌎 Trusted by Farmers</span>
     </div>
+
   </div>
+
 </section>
 
-<!-- WEATHER -->
-<div class="floating-weather" id="weather">Loading...</div>
+<!-- WEATHER (cleaned) -->
+<section class="weather-section">
+  <h3>Live Weather Insight</h3>
+  <div id="weather" class="weather-box">Loading...</div>
+</section>
 
 <!-- FEATURES -->
 <section class="features">
-  <div class="card">🌿 Disease Detection</div>
-  <div class="card">📊 Severity Analysis</div>
-  <div class="card">🌦 Weather Risk</div>
-  <div class="card">💊 Treatment</div>
+
+  <div class="card" data-aos="fade-up">
+    <h3>🌿 Disease Detection</h3>
+    <p>Upload crop images and get instant diagnosis.</p>
+  </div>
+
+  <div class="card" data-aos="fade-up" data-aos-delay="100">
+    <h3>📊 Severity Analysis</h3>
+    <p>Know if disease is mild, moderate or severe.</p>
+  </div>
+
+  <div class="card" data-aos="fade-up" data-aos-delay="200">
+    <h3>🌦 Weather Risk</h3>
+    <p>Predict disease based on environmental conditions.</p>
+  </div>
+
+  <div class="card" data-aos="fade-up" data-aos-delay="300">
+    <h3>💊 Smart Treatment</h3>
+    <p>Get AI-generated treatment & prevention advice.</p>
+  </div>
+
 </section>
 
-<!-- STEPS -->
+<!-- HOW IT WORKS -->
 <section id="insights" class="steps">
+
   <h2>How It Works</h2>
-  <div class="step">📸 Upload Image</div>
-  <div class="step">🧠 AI Detect</div>
-  <div class="step">💊 Treatment</div>
+
+  <div class="steps-grid">
+
+    <div class="step" data-aos="zoom-in">
+      <h3>📸 Upload</h3>
+      <p>Select crop image</p>
+    </div>
+
+    <div class="step" data-aos="zoom-in" data-aos-delay="100">
+      <h3>🧠 Analyze</h3>
+      <p>AI processes disease</p>
+    </div>
+
+    <div class="step" data-aos="zoom-in" data-aos-delay="200">
+      <h3>💊 Result</h3>
+      <p>Get solution & prevention tips</p>
+    </div>
+
+  </div>
+
 </section>
 
 <!-- TIPS -->
 <section class="tips">
+
   <h2>Prevention Tips</h2>
-  <ul>
-    <li>🌱 Avoid overwatering</li>
-    <li>🌿 Crop rotation</li>
-    <li>☀️ Sunlight</li>
-    <li>💧 Humidity control</li>
-  </ul>
+
+  <div class="tips-grid">
+
+    <div class="tip">🌱 Avoid Overwatering</div>
+    <div class="tip">🌿 Crop Rotation</div>
+    <div class="tip">☀️ Proper Sunlight</div>
+    <div class="tip">💧 Humidity Control</div>
+
+  </div>
+
 </section>
 
 <!-- SCAN -->
 <section id="scan" class="upload">
+
+  <h2>Scan Your Crop</h2>
+
   <input type="file" id="fileInput">
   <button onclick="analyze()">Analyze</button>
-  <div id="output"></div>
+
+  <div id="output" class="result-box"></div>
+
 </section>
 
 <!-- DASHBOARD -->
 <section id="dash" class="dashboard">
-  <h2>Dashboard</h2>
+
+  <h2>Dashboard Overview</h2>
+
+  <div class="dash-grid">
+    <div class="stat">Total Scans<br><b>120</b></div>
+    <div class="stat">Detected Cases<br><b>45</b></div>
+    <div class="stat">Accuracy<br><b>95%</b></div>
+  </div>
+
 </section>
 
 <!-- HISTORY -->
 <section id="history" class="history">
-  <h2>History</h2>
+
+  <h2>Scan History</h2>
+
+  <div class="history-box">
+    <p>No scans yet...</p>
+  </div>
+
 </section>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
