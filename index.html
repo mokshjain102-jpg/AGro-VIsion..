@@ -192,19 +192,41 @@ img.src=URL.createObjectURL(file);
 }
 
 // ANALYZE
-function analyze(){
-let file=document.getElementById("fileInput").files[0];
-if(!file){alert("Select image");return;}
+async function  analyze(){
 
-let diseases=["Early Blight","Leaf Spot","Healthy"];
-let result=diseases[Math.floor(Math.random()*diseases.length)];
-let confidence=Math.floor(Math.random()*20)+80;
+  let file = document.getElementById("fileInput").files[0];
 
-let text=`🌿 ${result} (${confidence}%)`;
-document.getElementById("output").innerText=text;
+  if(!file){
+    alert("Please select an image");
+    return;
+  }
 
-historyData.push(text);
-localStorage.setItem("data",JSON.stringify(historyData));
+  // 🔄 Loading
+  document.getElementById("output").innerText = "🔍 Analyzing image...";
+
+  let formData = new FormData();
+  formData.append("file", file);
+
+  try {
+
+    let res = await fetch("http://127.0.0.1:5000/analyze", {
+      method: "POST",
+      body: formData
+    });
+
+    let data = await res.json();
+
+    document.getElementById("output").innerHTML = `
+      <h3>🌿 Disease: ${data.disease}</h3>
+      <p>📊 Confidence: ${data.confidence}%</p>
+      <p>💊 Advice:</p>
+      <p>${data.advice}</p>
+    `;
+
+  } catch (error){
+    document.getElementById("output").innerText = "❌ Error connecting to backend";
+  }
+}
 
 updateDashboard();
 }
