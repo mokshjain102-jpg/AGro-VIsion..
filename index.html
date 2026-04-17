@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>AgroVision</title>
+
 <link rel="stylesheet" href="style.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
@@ -10,69 +11,45 @@
 <body>
 
 <header class="nav">
-  <div class="logo">🌱 AgroVision</div>
-
+  <h2>🌱 AgroVision</h2>
   <nav>
     <a href="#">Home</a>
-    <a href="#">Insights</a>
-    <a href="#">History</a>
-    <a href="#">Weather</a>
-    <a href="#">AI Chat</a>
-    <a href="#">Contact</a>
+    <a href="#dash">Dashboard</a>
+    <a href="#weather">Weather</a>
+    <a href="#chat">AI Chat</a>
   </nav>
-
-  <button class="ai-btn">AI Assistant</button>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-
-  <div class="hero-left">
+  <div class="hero-text">
     <h1>AgroVision</h1>
     <h2>Smart Farming. Smarter Future.</h2>
 
-    <p>AI powered crop & livestock intelligence for farmers.</p>
-
-    <div class="hero-actions">
-      <input type="file" id="imageInput" hidden>
-      <button class="scan-btn" onclick="document.getElementById('imageInput').click()">
-        📸 Scan Crop
-      </button>
-
-      <button class="demo-btn">▶ Watch Demo</button>
-    </div>
+    <button onclick="document.getElementById('imageInput').click()" class="scan-btn">
+      📸 Scan Crop
+    </button>
   </div>
-
 </section>
 
 <!-- STATS -->
-<div class="stats">
-  <div><strong>95.6%</strong><span>AI Accuracy</span></div>
-  <div><strong>50K+</strong><span>Farmers</span></div>
-  <div><strong>28°C</strong><span>Temperature</span></div>
-  <div><strong>60%</strong><span>Humidity</span></div>
-  <div><strong>12</strong><span>Scans</span></div>
-</div>
+<section class="stats">
+  <div>95.6%<span>Accuracy</span></div>
+  <div>50K+<span>Farmers</span></div>
+  <div id="temp">--<span>Temp</span></div>
+  <div id="hum">--<span>Humidity</span></div>
+</section>
 
 <!-- DASHBOARD -->
-<section class="dashboard">
+<section id="dash" class="dashboard">
 
- <div class="card large">
-  <h3>AI Prediction</h3>
+  <div class="card big">
+    <h3>AI Prediction</h3>
 
-  <!-- CLICKABLE UPLOAD -->
-  <div class="upload" onclick="document.getElementById('imageInput').click()">
-    <p>📸 Click or Drag Image Here</p>
-    <input type="file" id="imageInput" hidden>
-  </div>
-
-  <!-- RESULT -->
-  <div class="result">
-    <p>Crop: <span id="crop">--</span></p>
-    <p>Disease: <span id="disease">--</span></p>
-    <p>Cure: <span id="cure">--</span></p>
-  </div>
-</div>
+    <div class="upload" onclick="document.getElementById('imageInput').click()">
+      Click or Upload Image
+      <input type="file" id="imageInput" hidden>
+    </div>
 
     <div class="result">
       <p>Crop: <span id="crop">--</span></p>
@@ -81,39 +58,32 @@
     </div>
   </div>
 
-  <div class="card">
+  <div id="weather" class="card">
     <h3>Weather</h3>
-    <p>28°C</p>
-    <p>Partly Cloudy</p>
+    <p id="weatherText">Loading...</p>
   </div>
 
   <div class="card">
-    <h3>Quick Insights</h3>
+    <h3>Insights</h3>
     <ul id="insights"></ul>
   </div>
 
   <div class="card">
-    <h3>Recent History</h3>
+    <h3>History</h3>
     <ul id="history"></ul>
   </div>
 
 </section>
 
-<!-- FEATURES -->
-<section class="features">
+<!-- CHATBOT -->
+<div id="chat" class="chat-box">
+  <h3>🤖 AI Assistant</h3>
+  <div id="chatMessages"></div>
 
-  <h2>Everything You Need for Smart Farming</h2>
+  <input id="chatInput" placeholder="Ask about crops...">
+  <button onclick="sendMessage()">Send</button>
+</div>
 
-  <div class="grid">
-    <div class="box">AI Crop Scan</div>
-    <div class="box">Smart Insights</div>
-    <div class="box">Weather</div>
-    <div class="box">History</div>
-    <div class="box">AI Assistant</div>
-    <div class="box">Crop Knowledge</div>
-  </div>
-
-</section>
 
 <!-- FOOTER -->
 <section class="bottom">
