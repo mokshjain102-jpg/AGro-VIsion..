@@ -1,68 +1,94 @@
-const input = document.getElementById("imageInput");
-
-input.addEventListener("change", function(e){
-  const file = e.target.files[0];
-  if(!file) return;
-
-  const img = document.createElement("img");
-  img.src = URL.createObjectURL(file);
-  img.style.width = "150px";
-
-  const upload = document.querySelector(".upload");
-  upload.innerHTML = "";
-  upload.appendChild(img);
-
-  runAI();
-});
-
-const data = [
-  {crop:"Wheat",disease:"Rust",cure:"Use fungicide",precaution:"Avoid moisture"},
-  {crop:"Rice",disease:"Blast",cure:"Spray Tricyclazole",precaution:"Control water"},
-  {crop:"Tomato",disease:"Blight",cure:"Copper spray",precaution:"Crop rotation"}
+const crops = [
+  {
+    name: "Wheat",
+    diseases: [
+      {
+        name: "Leaf Rust",
+        cure: "Apply fungicide like Propiconazole",
+        precaution: "Avoid excess moisture"
+      },
+      {
+        name: "Powdery Mildew",
+        cure: "Use sulfur-based spray",
+        precaution: "Ensure proper air circulation"
+      }
+    ]
+  },
+  {
+    name: "Rice",
+    diseases: [
+      {
+        name: "Blast Disease",
+        cure: "Use Tricyclazole fungicide",
+        precaution: "Avoid overwatering"
+      },
+      {
+        name: "Brown Spot",
+        cure: "Apply balanced fertilizer",
+        precaution: "Maintain soil nutrients"
+      }
+    ]
+  },
+  {
+    name: "Tomato",
+    diseases: [
+      {
+        name: "Early Blight",
+        cure: "Use copper fungicide",
+        precaution: "Rotate crops regularly"
+      },
+      {
+        name: "Late Blight",
+        cure: "Apply Mancozeb spray",
+        precaution: "Avoid wet leaves"
+      }
+    ]
+  }
 ];
 
-function runAI(){
-  setTimeout(()=>{
-    let d=data[Math.floor(Math.random()*data.length)];
+document.getElementById("imageInput").addEventListener("change", function(e){
+  let file = e.target.files[0];
 
-    document.getElementById("crop").innerText=d.crop;
-    document.getElementById("disease").innerText=d.disease;
-    document.getElementById("cure").innerText=d.cure;
+  document.getElementById("preview").src = URL.createObjectURL(file);
 
-    document.getElementById("insights").innerHTML=`
-      <li>Health: Moderate</li>
-      <li>Disease: ${d.disease}</li>
-      <li>Precaution: ${d.precaution}</li>
-    `;
-
-    let li=document.createElement("li");
-    li.innerText=d.crop+" - "+d.disease;
-    document.getElementById("history").appendChild(li);
-
-  },1500);
-}
-
-/* WEATHER API (FREE) */
-fetch("https://api.open-meteo.com/v1/forecast?latitude=28.6&longitude=77.2&current_weather=true")
-.then(res=>res.json())
-.then(data=>{
-  document.getElementById("weatherText").innerText =
-    data.current_weather.temperature + "°C";
+  simulateAI();
 });
 
-/* CHATBOT */
-function sendMessage(){
-  let input=document.getElementById("chatInput");
-  let msg=input.value;
+function simulateAI() {
 
-  let box=document.getElementById("chatMessages");
-  box.innerHTML+=`<p>👤 ${msg}</p>`;
+  // loading animation
+  document.getElementById("crop").innerText = "Analyzing...";
+  document.getElementById("disease").innerText = "Scanning...";
+  document.getElementById("cure").innerText = "Processing...";
 
-  let reply="🌱 Maintain irrigation and monitor crops.";
+  setTimeout(() => {
 
-  if(msg.includes("disease")) reply="Use fungicide and remove infected leaves.";
-  if(msg.includes("water")) reply="Avoid overwatering crops.";
+    let crop = crops[Math.floor(Math.random() * crops.length)];
+    let disease = crop.diseases[Math.floor(Math.random() * crop.diseases.length)];
 
-  box.innerHTML+=`<p>🤖 ${reply}</p>`;
-  input.value="";
+    document.getElementById("crop").innerText = crop.name;
+    document.getElementById("disease").innerText = disease.name;
+    document.getElementById("cure").innerText = disease.cure;
+
+    addInsights(crop, disease);
+    addHistory(crop, disease);
+
+  }, 2000);
+}
+
+function addInsights(crop, disease) {
+  let insights = document.getElementById("insights");
+
+  insights.innerHTML = `
+    <div class="box">🌱 Crop Health: Moderate</div>
+    <div class="box">🦠 Risk Level: Medium</div>
+    <div class="box">💊 Suggestion: ${disease.precaution}</div>
+    <div class="box">📈 Yield Impact: 15-25%</div>
+  `;
+}
+
+function addHistory(crop, disease) {
+  let li = document.createElement("li");
+  li.innerText = `${crop.name} - ${disease.name}`;
+  document.getElementById("history").appendChild(li);
 }
