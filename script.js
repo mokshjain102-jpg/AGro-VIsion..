@@ -1,80 +1,68 @@
-const imageInput = document.getElementById("imageInput");
+const input = document.getElementById("imageInput");
 
-imageInput.addEventListener("change", function(e){
-  let file = e.target.files[0];
+input.addEventListener("change", function(e){
+  const file = e.target.files[0];
+  if(!file) return;
 
-  if (!file) return;
-
-  let img = document.createElement("img");
+  const img = document.createElement("img");
   img.src = URL.createObjectURL(file);
-  img.style.width = "200px";
+  img.style.width = "150px";
 
-  let upload = document.querySelector(".upload");
+  const upload = document.querySelector(".upload");
   upload.innerHTML = "";
   upload.appendChild(img);
 
-  simulateAI();
+  runAI();
 });
 
-// DATA (IMPORTANT)
 const data = [
-  {
-    crop: "Wheat",
-    disease: "Leaf Rust",
-    cure: "Apply fungicide (Propiconazole)",
-    precaution: "Avoid excessive moisture"
-  },
-  {
-    crop: "Rice",
-    disease: "Blast Disease",
-    cure: "Use Tricyclazole spray",
-    precaution: "Control irrigation"
-  },
-  {
-    crop: "Tomato",
-    disease: "Early Blight",
-    cure: "Use Copper Fungicide",
-    precaution: "Rotate crops"
-  }
+  {crop:"Wheat",disease:"Rust",cure:"Use fungicide",precaution:"Avoid moisture"},
+  {crop:"Rice",disease:"Blast",cure:"Spray Tricyclazole",precaution:"Control water"},
+  {crop:"Tomato",disease:"Blight",cure:"Copper spray",precaution:"Crop rotation"}
 ];
 
-function simulateAI(){
+function runAI(){
+  setTimeout(()=>{
+    let d=data[Math.floor(Math.random()*data.length)];
 
-  document.getElementById("crop").innerText = "Analyzing...";
-  document.getElementById("disease").innerText = "Scanning...";
-  document.getElementById("cure").innerText = "Processing...";
+    document.getElementById("crop").innerText=d.crop;
+    document.getElementById("disease").innerText=d.disease;
+    document.getElementById("cure").innerText=d.cure;
 
-  setTimeout(() => {
+    document.getElementById("insights").innerHTML=`
+      <li>Health: Moderate</li>
+      <li>Disease: ${d.disease}</li>
+      <li>Precaution: ${d.precaution}</li>
+    `;
 
-    let item = data[Math.floor(Math.random()*data.length)];
+    let li=document.createElement("li");
+    li.innerText=d.crop+" - "+d.disease;
+    document.getElementById("history").appendChild(li);
 
-    document.getElementById("crop").innerText = item.crop;
-    document.getElementById("disease").innerText = item.disease;
-    document.getElementById("cure").innerText = item.cure;
-document.querySelector(".ai-btn").addEventListener("click", () => {
-  alert("🤖 AI Assistant coming soon...");
+  },1500);
+}
+
+/* WEATHER API (FREE) */
+fetch("https://api.open-meteo.com/v1/forecast?latitude=28.6&longitude=77.2&current_weather=true")
+.then(res=>res.json())
+.then(data=>{
+  document.getElementById("weatherText").innerText =
+    data.current_weather.temperature + "°C";
 });
-    addInsights(item);
-    addHistory(item);
 
-  }, 2000);
-}
+/* CHATBOT */
+function sendMessage(){
+  let input=document.getElementById("chatInput");
+  let msg=input.value;
 
-// INSIGHTS BACK
-function addInsights(item){
-  let insights = document.getElementById("insights");
+  let box=document.getElementById("chatMessages");
+  box.innerHTML+=`<p>👤 ${msg}</p>`;
 
-  insights.innerHTML = `
-    <li>🌱 Crop Health: Moderate</li>
-    <li>🦠 Disease: ${item.disease}</li>
-    <li>⚠ Precaution: ${item.precaution}</li>
-    <li>📈 Yield Impact: 10-20%</li>
-  `;
-}
+  let reply="🌱 Maintain irrigation and monitor crops.";
 
-// HISTORY BACK
-function addHistory(item){
-  let li = document.createElement("li");
-  li.innerText = `${item.crop} - ${item.disease}`;
-  document.getElementById("history").appendChild(li);
+  if(msg.includes("disease")) reply="Use fungicide and remove infected leaves.";
+  if(msg.includes("water")) reply="Avoid overwatering crops.";
+
+  box.innerHTML+=`<p>🤖 ${reply}</p>`;
+  input.value="";
 }
