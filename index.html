@@ -6,8 +6,6 @@
 <title>AgroVision AI</title>
 
 <link rel="stylesheet" href="style.css">
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 <body>
@@ -18,6 +16,7 @@
     <a href="#">Home</a>
     <a href="#scan">Scan</a>
     <a href="#dash">Dashboard</a>
+    <a href="chat.html">AI Assistant</a>
   </div>
 </nav>
 
@@ -25,49 +24,62 @@
 <section class="parallax">
   <div class="overlay"></div>
   <div class="hero">
-    <h1>AI Crop Detection</h1>
-    <p>Smart Farming Assistant</p>
-    <button onclick="scrollToScan()">Scan Now</button>
+    <h1>Smart Farming AI</h1>
+    <p>Detect crop disease instantly</p>
+    <button onclick="scrollToScan()">Scan Crop</button>
   </div>
 </section>
 
 <!-- FEATURES -->
 <section class="features">
   <div class="card">🌿 Disease Detection</div>
-  <div class="card">📊 Severity</div>
+  <div class="card">📊 Severity Analysis</div>
   <div class="card">🌦 Weather Risk</div>
-  <div class="card">💊 Treatment</div>
+  <div class="card">💊 Smart Treatment</div>
 </section>
 
 <!-- WEATHER -->
 <section class="weather">
-  <h2>Live Weather</h2>
-  <div id="weather">Loading...</div>
+  <h2>Live Weather Risk</h2>
+  <div id="weather"></div>
 </section>
 
 <!-- SCAN -->
 <section id="scan" class="upload">
-  <h2>Upload Crop Image</h2>
+  <h2>Scan Your Crop</h2>
   <input type="file" id="fileInput">
   <button onclick="analyze()">Analyze</button>
   <div id="output"></div>
 </section>
 
 <!-- DASHBOARD -->
-<section id="dash">
-  <h2>Dashboard</h2>
-  <canvas id="chart"></canvas>
+<section id="dash" class="dashboard">
+  <h2>Farm Insights Dashboard</h2>
+
+  <div class="dash-grid">
+    <div class="dash-card">
+      <h3>Total Scans</h3>
+      <p id="scanCount">120</p>
+    </div>
+
+    <div class="dash-card">
+      <h3>Diseases Found</h3>
+      <p id="diseaseCount">45</p>
+    </div>
+
+    <div class="dash-card">
+      <h3>Healthy Crops</h3>
+      <p id="healthyCount">75</p>
+    </div>
+
+    <div class="dash-card">
+      <h3>High Risk Alerts</h3>
+      <p id="riskCount">12</p>
+    </div>
+  </div>
+
 </section>
 
-<!-- CHAT -->
-<div id="chatbox">
-  <div id="chatMessages"></div>
-  <input id="userInput" placeholder="Ask about crops...">
-  <button onclick="sendMessage()">Send</button>
-  <button onclick="startVoice()">🎤</button>
-</div>
-
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="script.js"></script>
 
 </body>
