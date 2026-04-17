@@ -1,91 +1,127 @@
-*{margin:0;padding:0;box-sizing:border-box;}
-
-body{
-  font-family:'Poppins',sans-serif;
-  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-  color:white;
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #f4f7f6;
 }
 
 /* NAV */
-.nav{
-  display:flex;
-  justify-content:space-between;
-  padding:15px 40px;
-  background:rgba(0,0,0,0.6);
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 50px;
+  background: white;
+  align-items: center;
 }
 
-nav a{
-  margin:0 10px;
-  color:white;
-  text-decoration:none;
+.logo {
+  font-weight: 800;
+  color: #1f7a4c;
+}
+
+nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.ai-btn {
+  background: #1f7a4c;
+  color: white;
+  border-radius: 20px;
+  padding: 8px 20px;
+  border: none;
 }
 
 /* HERO */
-.hero{
-  height:90vh;
-  background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.3)),
+.hero {
+  height: 75vh;
+  background: linear-gradient(rgba(0,100,0,0.6), rgba(0,0,0,0.3)),
   url('https://images.unsplash.com/photo-1500382017468-9049fed747ef') center/cover;
-  display:flex;
-  align-items:center;
-  padding-left:60px;
+  display: flex;
+  align-items: center;
+  padding-left: 60px;
+  color: white;
 }
 
-.hero h1{font-size:80px;}
+.hero-left h1 {
+  font-size: 70px;
+}
 
-.scan-btn{
-  margin-top:20px;
-  padding:12px 30px;
-  background:#00cc66;
-  border:none;
-  border-radius:30px;
-  color:white;
+.hero-actions button {
+  margin-right: 10px;
+  padding: 12px 25px;
+  border-radius: 30px;
+  border: none;
+}
+
+.scan-btn {
+  background: #00cc66;
+  color: white;
+}
+
+.demo-btn {
+  background: white;
 }
 
 /* STATS */
-.stats{
-  display:flex;
-  justify-content:space-around;
-  background:rgba(0,0,0,0.8);
-  padding:20px;
+.stats {
+  display: flex;
+  justify-content: space-around;
+  background: #e6f4ea;
+  padding: 20px;
 }
 
 /* DASHBOARD */
-.dashboard{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:20px;
-  padding:40px;
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 20px;
+  padding: 40px;
 }
 
-.card{
-  background:rgba(255,255,255,0.08);
-  backdrop-filter:blur(12px);
-  padding:20px;
-  border-radius:10px;
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
 }
 
-.big{grid-column:span 2;}
-
-.upload{
-  border:2px dashed #00ffcc;
-  padding:30px;
-  text-align:center;
-  cursor:pointer;
+.large {
+  grid-column: span 2;
 }
 
-/* CHAT */
-.chat-box{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  width:300px;
-  background:rgba(0,0,0,0.8);
-  padding:15px;
-  border-radius:10px;
+.upload {
+  border: 2px dashed #ccc;
+  padding: 30px;
+  margin: 10px 0;
 }
 
-#chatMessages{
-  height:150px;
-  overflow:auto;
-  margin-bottom:10px;
+/* FEATURES */
+.features {
+  padding: 40px;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 20px;
+}
+
+.box {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* BOTTOM */
+.bottom {
+  display: flex;
+  gap: 20px;
+  padding: 40px;
+}
+
+.about, .contact {
+  flex: 1;
+  background: white;
+  padding: 20px;
 }
