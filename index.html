@@ -2,163 +2,63 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AgroVision AI</title>
-
+<title>AgroAI Pro</title>
 <link rel="stylesheet" href="style.css">
-
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<!-- TOP PANEL -->
-<div class="top-panel">
-  <div>🌦 <span id="weatherMini">Loading...</span></div>
-  <div>📊 AI Status: Active</div>
-  <div>🤖 Accuracy: 95%</div>
-</div>
+<div class="bg"></div>
 
-<!-- NAV -->
-<nav>
-  <h2>🌿 AgroVision</h2>
-  <div>
+<header>
+  <h1 class="logo">🌱 AgroAI</h1>
+  <nav>
     <a href="#">Home</a>
-    <a href="#insights">Insights</a>
-    <a href="#scan">Scan</a>
-    <a href="#dash">Dashboard</a>
-    <a href="#history">History</a>
+    <a href="#">Insights</a>
+    <a href="#">History</a>
+    <a href="#">Login</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2 class="title">AI Crop Intelligence</h2>
+  <p>Next-gen farming powered by Machine Learning</p>
+
+  <input class="search" placeholder="🔍 Ask AI about crops, diseases..." />
+
+  <div class="upload-card">
+    <input type="file" id="imageInput">
+    <button onclick="uploadImage()">Predict</button>
+    <img id="preview">
   </div>
-</nav>
-
-<!-- HERO (same structure, improved feel) -->
-<section class="parallax">
-
-  <div class="overlay"></div>
-
-  <div class="hero">
-    <h1 data-aos="fade-up">Smart Farming AI</h1>
-    <p data-aos="fade-up" data-aos-delay="100">Detect crop disease instantly using AI</p>
-
-    <button onclick="scrollToScan()" data-aos="fade-up" data-aos-delay="200">
-      Scan Crop
-    </button>
-
-    <div class="hero-stats" data-aos="fade-up" data-aos-delay="300">
-      <span>🌿 10K+ Scans</span>
-      <span>⚡ 95% Accuracy</span>
-      <span>🌎 Farmers Trust Us</span>
-    </div>
-  </div>
-
 </section>
 
-<!-- WEATHER (same, just better styled) -->
-<div class="floating-weather" id="weather">Loading...</div>
+<section class="dashboard">
+  <h2>Analytics Dashboard</h2>
 
-<!-- FEATURES (same but enhanced content) -->
-<section class="features">
-
-  <div class="card" data-aos="fade-up">
-    <h3>🌿 Disease Detection</h3>
-    <p>Instant AI-based crop disease identification.</p>
-  </div>
-
-  <div class="card" data-aos="fade-up" data-aos-delay="100">
-    <h3>📊 Severity Analysis</h3>
-    <p>Mild, Moderate & Severe classification.</p>
-  </div>
-
-  <div class="card" data-aos="fade-up" data-aos-delay="200">
-    <h3>🌦 Weather Risk</h3>
-    <p>Live environmental risk prediction.</p>
-  </div>
-
-  <div class="card" data-aos="fade-up" data-aos-delay="300">
-    <h3>💊 Treatment</h3>
-    <p>AI-powered treatment & prevention tips.</p>
-  </div>
-
-</section>
-
-<!-- STEPS (same structure improved layout) -->
-<section id="insights" class="steps">
-
-  <h2>How It Works</h2>
-
-  <div class="steps-row">
-
-    <div class="step" data-aos="zoom-in">
-      📸 Upload Image
+  <div class="grid">
+    <div class="box glow">
+      <h3>🌾 Crop</h3>
+      <p id="crop">---</p>
     </div>
 
-    <div class="step" data-aos="zoom-in" data-aos-delay="100">
-      🧠 AI Detect
+    <div class="box glow">
+      <h3>🦠 Disease</h3>
+      <p id="disease">---</p>
     </div>
 
-    <div class="step" data-aos="zoom-in" data-aos-delay="200">
-      💊 Get Treatment
+    <div class="box glow">
+      <h3>💊 Cure</h3>
+      <p id="cure">---</p>
     </div>
-
   </div>
-
 </section>
 
-<!-- TIPS (same but styled grid) -->
-<section class="tips">
-
-  <h2>Prevention Tips</h2>
-
-  <div class="tips-row">
-    <div class="tip">🌱 Avoid overwatering</div>
-    <div class="tip">🌿 Crop rotation</div>
-    <div class="tip">☀️ Sunlight exposure</div>
-    <div class="tip">💧 Humidity control</div>
-  </div>
-
-</section>
-
-<!-- SCAN (same but result styled) -->
-<section id="scan" class="upload">
-
-  <input type="file" id="fileInput">
-  <button onclick="analyze()">Analyze</button>
-
-  <div id="output" class="result-box"></div>
-
-</section>
-
-<!-- DASHBOARD (same but structured) -->
-<section id="dash" class="dashboard">
-
-  <h2>Dashboard</h2>
-
-  <div class="dash-row">
-    <div class="stat">Scans<br><b>120</b></div>
-    <div class="stat">Detected<br><b>45</b></div>
-    <div class="stat">Accuracy<br><b>95%</b></div>
-  </div>
-
-</section>
-
-<!-- HISTORY (same but styled) -->
-<section id="history" class="history">
-
-  <h2>History</h2>
-
-  <div class="history-box">
-    No scans yet
-  </div>
-
-</section>
-
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-AOS.init({ duration: 800, once: true });
-</script>
+<footer>
+  <p>© 2026 AgroAI | Smart Farming Future</p>
+</footer>
 
 <script src="script.js"></script>
-
 </body>
 </html>
