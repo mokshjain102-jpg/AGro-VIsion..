@@ -5,263 +5,67 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AgroVision AI</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-
-body{
-background:url("https://images.unsplash.com/photo-1500382017468-9049fed747ef") no-repeat center/cover;
-color:white;
-}
-
-body::before{
-content:"";
-position:fixed;
-width:100%;height:100%;
-background:rgba(0,0,0,0.6);
-z-index:-1;
-}
-
-/* NAVBAR */
-header{
-display:flex;
-justify-content:space-between;
-padding:20px 40px;
-background:rgba(255,255,255,0.1);
-backdrop-filter:blur(10px);
-border-bottom:1px solid rgba(255,255,255,0.2);
-position:sticky;
-top:0;
-}
-
-nav a{
-color:white;
-margin:10px;
-text-decoration:none;
-cursor:pointer;
-font-weight:500;
-transition:0.3s;
-}
-
-nav a:hover{
-color:#00ff9d;
-}
-
-/* HERO */
-.hero{
-height:90vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-}
-
-.hero h1{
-font-size:42px;
-background:linear-gradient(90deg,#00ff9d,#00c3ff);
--webkit-background-clip:text;
-color:transparent;
-}
-
-.btn{
-margin-top:20px;
-padding:12px 25px;
-background:linear-gradient(45deg,#00ff9d,#00c3ff);
-border:none;
-color:white;
-cursor:pointer;
-border-radius:30px;
-transition:0.3s;
-}
-
-.btn:hover{
-transform:scale(1.1);
-}
-
-/* FEATURES */
-.features{
-display:flex;
-gap:20px;
-justify-content:center;
-padding:40px;
-flex-wrap:wrap;
-}
-
-.card{
-background:rgba(255,255,255,0.1);
-padding:20px;
-border-radius:15px;
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-10px) scale(1.05);
-}
-
-/* DEMO */
-.demo{text-align:center;padding:40px;}
-img{max-width:200px;margin-top:10px;border-radius:10px;}
-
-/* DASHBOARD */
-.stats{display:flex;gap:20px;flex-wrap:wrap;}
-.stat{
-background:#2e7d32;
-padding:20px;
-border-radius:10px;
-flex:1;
-}
-
-/* LOGIN */
-.login-box{
-display:none;
-position:fixed;
-top:50%;left:50%;
-transform:translate(-50%,-50%);
-background:white;color:black;
-padding:20px;border-radius:10px;
-}
-</style>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 </head>
 
 <body>
 
-<header>
-<h2>🌱 AgroVision</h2>
+<div id="particles-js"></div>
 
 <nav>
-<a onclick="scrollToSec('home')">Home</a>
-<a onclick="scrollToSec('demo')">Scan</a>
-<a onclick="scrollToSec('dashboard')">Dashboard</a>
-<a onclick="openLogin()">Login</a>
-<a href="chat.html">🤖 AI Chat</a>
+<h2>🌿 AgroVision</h2>
+<div>
+<a href="#">Home</a>
+<a href="#scan">Scan</a>
+<a href="#dash">Dashboard</a>
+</div>
 </nav>
 
-</header>
-
-<div class="hero" id="home">
+<section class="hero">
 <h1>AI Crop Disease Detection</h1>
 <p>Smart Farming Assistant</p>
-<button class="btn" onclick="scrollToSec('demo')">Scan Crop</button>
-</div>
-
-<div class="features">
-<div class="card">🌿 Disease Detection</div>
-<div class="card">📊 Severity Analysis</div>
-<div class="card">🌦 Weather Risk</div>
-<div class="card">💊 Smart Treatment</div>
-</div>
-
-<div class="demo" id="demo">
-<h2>Scan Leaf</h2>
-<input type="file" id="fileInput" onchange="previewImage()"><br>
-<img id="preview"><br>
-<button class="btn" onclick="analyze()">Analyze</button>
-<p id="output"></p>
-</div>
-
-<section id="dashboard">
-<h2>Dashboard</h2>
-
-<div class="stats">
-<div class="stat" id="total">0 Scans</div>
-<div class="stat" id="disease">0 Diseases</div>
-<div class="stat" id="healthy">0 Healthy</div>
-</div>
-
-<ul id="history"></ul>
+<button onclick="scrollToScan()">Scan Crop</button>
 </section>
 
-<div class="login-box" id="loginBox">
-<h3>Login</h3>
-<input placeholder="Username"><br><br>
-<input type="password" placeholder="Password"><br><br>
-<button onclick="login()">Login</button>
+<section class="features">
+<div class="card" data-aos="zoom-in">🌿 Detection</div>
+<div class="card" data-aos="zoom-in">📊 Severity</div>
+<div class="card" data-aos="zoom-in">🌦 Weather</div>
+<div class="card" data-aos="zoom-in">💊 Treatment</div>
+</section>
+
+<section class="weather">
+<h2>Live Weather</h2>
+<div id="weather">Loading...</div>
+</section>
+
+<section class="upload" id="scan">
+<h2>Upload Crop Image</h2>
+<input type="file" id="fileInput">
+<button onclick="analyze()">Analyze</button>
+<div id="output" class="result"></div>
+</section>
+
+<section id="dash">
+<h2>Dashboard</h2>
+<canvas id="chart"></canvas>
+</section>
+
+<div id="chatbot">
+<div id="chat-header">AI Assistant</div>
+<div id="chat-body"></div>
+<div id="chat-input">
+<input id="msg">
+<button onclick="sendMsg()">Send</button>
+</div>
 </div>
 
-<script>
-
-let historyData=JSON.parse(localStorage.getItem("data"))||[];
-
-// IMAGE PREVIEW
-function previewImage(){
-let file=document.getElementById("fileInput").files[0];
-let img=document.getElementById("preview");
-img.src=URL.createObjectURL(file);
-}
-
-// ANALYZE
-async function  analyze(){
-
-  let file = document.getElementById("fileInput").files[0];
-
-  if(!file){
-    alert("Please select an image");
-    return;
-  }
-
-  // 🔄 Loading
-  document.getElementById("output").innerText = "🔍 Analyzing image...";
-
-  let formData = new FormData();
-  formData.append("file", file);
-
-  try {
-
-    let res = await fetch("http://127.0.0.1:5000/analyze", {
-      method: "POST",
-      body: formData
-    });
-
-    let data = await res.json();
-
-    document.getElementById("output").innerHTML = `
-      <h3>🌿 Disease: ${data.disease}</h3>
-      <p>📊 Confidence: ${data.confidence}%</p>
-      <p>💊 Advice:</p>
-      <p>${data.advice}</p>
-    `;
-
-  } catch (error){
-    document.getElementById("output").innerText = "❌ Error connecting to backend";
-  }
-}
-
-updateDashboard();
-}
-
-// DASHBOARD
-function updateDashboard(){
-let total=historyData.length;
-let disease=historyData.filter(x=>!x.includes("Healthy")).length;
-let healthy=total-disease;
-
-document.getElementById("total").innerText=total+" Scans";
-document.getElementById("disease").innerText=disease+" Diseases";
-document.getElementById("healthy").innerText=healthy+" Healthy";
-
-let list=document.getElementById("history");
-list.innerHTML="";
-historyData.forEach(i=>{
-let li=document.createElement("li");
-li.innerText=i;
-list.appendChild(li);
-});
-}
-
-// LOGIN
-function openLogin(){document.getElementById("loginBox").style.display="block";}
-function login(){alert("Login Success");document.getElementById("loginBox").style.display="none";}
-
-// SCROLL
-function scrollToSec(id){
-document.getElementById(id).scrollIntoView({behavior:"smooth"});
-}
-
-updateDashboard();
-
-</script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
