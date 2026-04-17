@@ -23,38 +23,62 @@ background:rgba(0,0,0,0.6);
 z-index:-1;
 }
 
-/* NAV */
+/* NAVBAR */
 header{
-display:flex;justify-content:space-between;
+display:flex;
+justify-content:space-between;
 padding:20px 40px;
-background:rgba(0,0,0,0.5);
-position:sticky;top:0;
+background:rgba(0,0,0,0.6);
+position:sticky;
+top:0;
 }
 
-nav a{color:white;margin:10px;cursor:pointer;text-decoration:none;}
+nav a{
+color:white;
+margin:10px;
+text-decoration:none;
+cursor:pointer;
+font-weight:500;
+}
+
+nav a:hover{
+color:#00ff9d;
+}
 
 /* HERO */
 .hero{
 height:90vh;
-display:flex;flex-direction:column;
-justify-content:center;align-items:center;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 text-align:center;
 }
+
 .hero h1{font-size:42px;}
+
 .btn{
-margin-top:20px;padding:12px 25px;
-background:#4caf50;border:none;color:white;cursor:pointer;
+margin-top:20px;
+padding:12px 25px;
+background:#4caf50;
+border:none;
+color:white;
+cursor:pointer;
 }
 
 /* FEATURES */
 .features{
-display:flex;gap:20px;
+display:flex;
+gap:20px;
 justify-content:center;
-padding:40px;flex-wrap:wrap;
+padding:40px;
+flex-wrap:wrap;
 }
+
 .card{
 background:rgba(255,255,255,0.1);
-padding:20px;border-radius:10px;
+padding:20px;
+border-radius:10px;
 }
 
 /* DEMO */
@@ -65,7 +89,9 @@ img{max-width:200px;margin-top:10px;border-radius:10px;}
 .stats{display:flex;gap:20px;flex-wrap:wrap;}
 .stat{
 background:#2e7d32;
-padding:20px;border-radius:10px;flex:1;
+padding:20px;
+border-radius:10px;
+flex:1;
 }
 
 /* LOGIN */
@@ -80,15 +106,41 @@ padding:20px;border-radius:10px;
 
 /* CHATBOT */
 #chatbot{
-position:fixed;bottom:20px;right:20px;
-width:300px;background:white;color:black;
-border-radius:10px;overflow:hidden;
+position:fixed;
+bottom:20px;
+right:20px;
+width:300px;
+background:white;
+color:black;
+border-radius:10px;
+overflow:hidden;
 box-shadow:0 5px 15px rgba(0,0,0,0.3);
 }
-#chat-header{background:#2e7d32;color:white;padding:10px;}
-#chat-box{height:200px;overflow-y:auto;padding:10px;}
-#chat-input{width:70%;padding:10px;border:none;}
-#chatbot button{width:30%;border:none;background:#4caf50;color:white;}
+
+#chat-header{
+background:#2e7d32;
+color:white;
+padding:10px;
+}
+
+#chat-box{
+height:200px;
+overflow-y:auto;
+padding:10px;
+}
+
+#chat-input{
+width:70%;
+padding:10px;
+border:none;
+}
+
+#chatbot button{
+width:30%;
+border:none;
+background:#4caf50;
+color:white;
+}
 
 </style>
 </head>
@@ -97,12 +149,16 @@ box-shadow:0 5px 15px rgba(0,0,0,0.3);
 
 <header>
 <h2>🌱 AgroVision</h2>
+
+<!-- ✅ UPDATED NAVBAR -->
 <nav>
 <a onclick="scrollToSec('home')">Home</a>
 <a onclick="scrollToSec('demo')">Scan</a>
 <a onclick="scrollToSec('dashboard')">Dashboard</a>
 <a onclick="openLogin()">Login</a>
+<a href="chat.html">🤖 AI Chat</a> <!-- 🔥 YE ADD HUA HAI -->
 </nav>
+
 </header>
 
 <div class="hero" id="home">
