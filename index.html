@@ -2,213 +2,97 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>AgroVision AI</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
-
-<style>
-
-/* GLOBAL */
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-  color: white;
-}
-
-/* NAV */
-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 40px;
-}
-
-nav a {
-  margin: 10px;
-  color: white;
-  text-decoration: none;
-}
-
-/* HERO */
-.hero {
-  height: 100vh;
-  background: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef') center/cover;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.hero h1 {
-  font-size: 100px;
-  color: #00ffcc;
-}
-
-.scan-btn {
-  padding: 20px 50px;
-  font-size: 20px;
-  border-radius: 40px;
-  border: none;
-  background: linear-gradient(45deg,#00ffcc,#00c9ff);
-  cursor: pointer;
-}
-
-/* SECTIONS */
-section {
-  padding: 60px;
-  text-align: center;
-}
-
-/* CARDS */
-.cards {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.card {
-  background: rgba(255,255,255,0.1);
-  padding: 20px;
-  border-radius: 15px;
-  width: 200px;
-}
-
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 20px;
-}
-
-.box {
-  background: rgba(255,255,255,0.1);
-  padding: 20px;
-  border-radius: 15px;
-}
-
-</style>
+<title>AgroVision</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<header>
+<header class="navbar">
   <h1>🌱 AgroVision</h1>
   <nav>
-    <a href="#">Home</a>
-    <a href="#">AI</a>
-    <a href="#">Insights</a>
-    <a href="#">Weather</a>
-    <a href="#">Contact</a>
+    <a>Home</a>
+    <a>Insights</a>
+    <a>History</a>
+    <a>Weather</a>
+    <a>AI Chat</a>
+    <a>Contact</a>
   </nav>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-  <h1>AGROVISION</h1>
-  <p>AI Smart Farming System</p>
+  <div class="hero-content">
+    <h1>AgroVision</h1>
+    <p>Smart Farming. Smarter Future.</p>
 
-  <input type="file" id="imageInput" hidden>
-  <button class="scan-btn" onclick="document.getElementById('imageInput').click()">📸 Scan Crop</button>
-
-  <img id="preview" width="200">
-</section>
-
-<!-- RESULT -->
-<section>
-  <h2>🌾 AI Prediction</h2>
-  <div class="cards">
-    <div class="card">Crop: <span id="crop">--</span></div>
-    <div class="card">Disease: <span id="disease">--</span></div>
-    <div class="card">Cure: <span id="cure">--</span></div>
+    <button class="scan-btn">📸 Scan Crop</button>
   </div>
 </section>
 
-<!-- INSIGHTS -->
-<section>
-  <h2>📊 Insights</h2>
-  <div class="grid">
-    <div class="box">🌱 Growth: Good</div>
-    <div class="box">💧 Moisture: Medium</div>
-    <div class="box">🌡 Temp: 28°C</div>
-    <div class="box">🌾 Yield: High</div>
-    <div class="box">🧪 Soil: Balanced</div>
-    <div class="box">🌍 Region: Suitable</div>
-  </div>
+<!-- STATS BAR -->
+<section class="stats">
+  <div>95.6% <span>Accuracy</span></div>
+  <div>50K+ <span>Users</span></div>
+  <div>28°C <span>Temp</span></div>
+  <div>60% <span>Humidity</span></div>
+  <div>12 <span>Scans</span></div>
 </section>
 
-<!-- WEATHER -->
-<section>
-  <h2>🌦 Weather</h2>
-  <div class="cards">
-    <div class="card">Temp: 28°C</div>
-    <div class="card">Humidity: 60%</div>
-    <div class="card">Rain: Low</div>
-  </div>
-</section>
+<!-- MAIN CARDS -->
+<section class="cards-section">
 
-<!-- HISTORY -->
-<section>
-  <h2>📜 History</h2>
-  <ul id="history"></ul>
+  <div class="card big">
+    <h3>AI Prediction</h3>
+    <input type="file" id="imageInput">
+    <p id="crop">--</p>
+    <p id="disease">--</p>
+    <p id="cure">--</p>
+  </div>
+
+  <div class="card">
+    <h3>Weather</h3>
+    <p>28°C</p>
+  </div>
+
+  <div class="card">
+    <h3>Insights</h3>
+    <p>High Yield Expected</p>
+  </div>
+
+  <div class="card">
+    <h3>History</h3>
+    <ul id="history"></ul>
+  </div>
+
 </section>
 
 <!-- FEATURES -->
-<section>
-  <h2>🚀 Features</h2>
+<section class="features">
+  <h2>Everything You Need</h2>
+
   <div class="grid">
-    <div class="box">🤖 AI Prediction</div>
-    <div class="box">📊 Analytics</div>
-    <div class="box">🌍 Smart Farming</div>
-    <div class="box">📈 Yield Boost</div>
-    <div class="box">🧠 AI Assistant</div>
-    <div class="box">📡 IoT Ready</div>
+    <div class="box">AI Scan</div>
+    <div class="box">Insights</div>
+    <div class="box">Weather</div>
+    <div class="box">History</div>
+    <div class="box">AI Chat</div>
+    <div class="box">Knowledge</div>
   </div>
 </section>
 
-<!-- EXTRA -->
-<section>
-  <h2>🌿 Crop Knowledge</h2>
-  <p>Get full details of crops, diseases, fertilizers, and smart farming techniques.</p>
+<!-- ABOUT -->
+<section class="about">
+  <h2>About AgroVision</h2>
+  <p>AI powered farming solution for better crop management.</p>
 </section>
 
 <!-- CONTACT -->
-<section>
-  <h2>📞 Contact</h2>
+<section class="contact">
+  <h2>Contact</h2>
   <p>Email: agrovision@gmail.com</p>
-  <p>Phone: 9876543210</p>
 </section>
-
-  
-<script>
-
-document.getElementById("imageInput").addEventListener("change", function(e){
-  let file = e.target.files[0];
-  document.getElementById("preview").src = URL.createObjectURL(file);
-  uploadImage(file);
-});
-
-function uploadImage(file){
-  let formData = new FormData();
-  formData.append("file", file);
-
-  fetch("http://127.0.0.1:5000/predict",{
-    method:"POST",
-    body:formData
-  })
-  .then(res=>res.json())
-  .then(data=>{
-    document.getElementById("crop").innerText=data.crop;
-    document.getElementById("disease").innerText=data.disease;
-    document.getElementById("cure").innerText=data.cure;
-
-    let li=document.createElement("li");
-    li.innerText=data.crop+" - "+data.disease;
-    document.getElementById("history").appendChild(li);
-  });
-}
-
-</script>
 
 </body>
 </html>
-
