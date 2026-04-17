@@ -62,7 +62,76 @@ nav a {
 .demo-btn {
   background: white;
 }
+/* REMOVE WHITE FLAT LOOK */
+body {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: white;
+}
 
+/* CARDS UPGRADE */
+.card, .box, .about, .contact {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: 0.3s;
+}
+
+/* TOUCH EFFECT */
+.card:active, .box:active, button:active {
+  transform: scale(0.96);
+}
+
+/* HOVER FEEL */
+.card:hover, .box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 25px #00ffcc;
+}
+
+/* BUTTON FEEL */
+button {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #00ffcc;
+}
+
+/* CLICK RIPPLE EFFECT */
+button::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  background: rgba(255,255,255,0.4);
+  border-radius: 50%;
+  transition: 0.5s;
+}
+
+button:active::after {
+  width: 200px;
+  height: 200px;
+}
+
+/* IMAGE PREVIEW STYLE */
+#preview {
+  width: 200px;
+  border-radius: 15px;
+  margin-top: 15px;
+  border: 2px solid #00ffcc;
+}
+
+/* DRAG ZONE */
+.upload {
+  border: 2px dashed #00ffcc;
+  border-radius: 15px;
+  transition: 0.3s;
+}
+
+.upload:hover {
+  background: rgba(0,255,204,0.1);
+}
 /* STATS */
 .stats {
   display: flex;
