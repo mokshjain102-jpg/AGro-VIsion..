@@ -24,7 +24,7 @@
 <nav>
   <h2>🌿 AgroVision</h2>
   <div>
-    <a href="#hero">Home</a>
+    <a href="#">Home</a>
     <a href="#insights">Insights</a>
     <a href="#scan">Scan</a>
     <a href="#dash">Dashboard</a>
@@ -32,103 +32,95 @@
   </div>
 </nav>
 
-<!-- HERO -->
-<section id="hero" class="hero-section">
+<!-- HERO (same structure, improved feel) -->
+<section class="parallax">
 
-  <div class="hero-content" data-aos="fade-up">
+  <div class="overlay"></div>
 
-    <h1>AI-Powered Crop Intelligence</h1>
-    <p>Detect diseases early, reduce losses, and maximize yield using AI.</p>
+  <div class="hero">
+    <h1 data-aos="fade-up">Smart Farming AI</h1>
+    <p data-aos="fade-up" data-aos-delay="100">Detect crop disease instantly using AI</p>
 
-    <button onclick="scrollToScan()">📸 Scan Crop</button>
+    <button onclick="scrollToScan()" data-aos="fade-up" data-aos-delay="200">
+      Scan Crop
+    </button>
 
-    <div class="hero-stats">
+    <div class="hero-stats" data-aos="fade-up" data-aos-delay="300">
       <span>🌿 10K+ Scans</span>
       <span>⚡ 95% Accuracy</span>
-      <span>🌎 Trusted by Farmers</span>
+      <span>🌎 Farmers Trust Us</span>
     </div>
-
   </div>
 
 </section>
 
-<!-- WEATHER (cleaned) -->
-<section class="weather-section">
-  <h3>Live Weather Insight</h3>
-  <div id="weather" class="weather-box">Loading...</div>
-</section>
+<!-- WEATHER (same, just better styled) -->
+<div class="floating-weather" id="weather">Loading...</div>
 
-<!-- FEATURES -->
+<!-- FEATURES (same but enhanced content) -->
 <section class="features">
 
   <div class="card" data-aos="fade-up">
     <h3>🌿 Disease Detection</h3>
-    <p>Upload crop images and get instant diagnosis.</p>
+    <p>Instant AI-based crop disease identification.</p>
   </div>
 
   <div class="card" data-aos="fade-up" data-aos-delay="100">
     <h3>📊 Severity Analysis</h3>
-    <p>Know if disease is mild, moderate or severe.</p>
+    <p>Mild, Moderate & Severe classification.</p>
   </div>
 
   <div class="card" data-aos="fade-up" data-aos-delay="200">
     <h3>🌦 Weather Risk</h3>
-    <p>Predict disease based on environmental conditions.</p>
+    <p>Live environmental risk prediction.</p>
   </div>
 
   <div class="card" data-aos="fade-up" data-aos-delay="300">
-    <h3>💊 Smart Treatment</h3>
-    <p>Get AI-generated treatment & prevention advice.</p>
+    <h3>💊 Treatment</h3>
+    <p>AI-powered treatment & prevention tips.</p>
   </div>
 
 </section>
 
-<!-- HOW IT WORKS -->
+<!-- STEPS (same structure improved layout) -->
 <section id="insights" class="steps">
 
   <h2>How It Works</h2>
 
-  <div class="steps-grid">
+  <div class="steps-row">
 
     <div class="step" data-aos="zoom-in">
-      <h3>📸 Upload</h3>
-      <p>Select crop image</p>
+      📸 Upload Image
     </div>
 
     <div class="step" data-aos="zoom-in" data-aos-delay="100">
-      <h3>🧠 Analyze</h3>
-      <p>AI processes disease</p>
+      🧠 AI Detect
     </div>
 
     <div class="step" data-aos="zoom-in" data-aos-delay="200">
-      <h3>💊 Result</h3>
-      <p>Get solution & prevention tips</p>
+      💊 Get Treatment
     </div>
 
   </div>
 
 </section>
 
-<!-- TIPS -->
+<!-- TIPS (same but styled grid) -->
 <section class="tips">
 
   <h2>Prevention Tips</h2>
 
-  <div class="tips-grid">
-
-    <div class="tip">🌱 Avoid Overwatering</div>
-    <div class="tip">🌿 Crop Rotation</div>
-    <div class="tip">☀️ Proper Sunlight</div>
-    <div class="tip">💧 Humidity Control</div>
-
+  <div class="tips-row">
+    <div class="tip">🌱 Avoid overwatering</div>
+    <div class="tip">🌿 Crop rotation</div>
+    <div class="tip">☀️ Sunlight exposure</div>
+    <div class="tip">💧 Humidity control</div>
   </div>
 
 </section>
 
-<!-- SCAN -->
+<!-- SCAN (same but result styled) -->
 <section id="scan" class="upload">
-
-  <h2>Scan Your Crop</h2>
 
   <input type="file" id="fileInput">
   <button onclick="analyze()">Analyze</button>
@@ -137,31 +129,35 @@
 
 </section>
 
-<!-- DASHBOARD -->
+<!-- DASHBOARD (same but structured) -->
 <section id="dash" class="dashboard">
 
-  <h2>Dashboard Overview</h2>
+  <h2>Dashboard</h2>
 
-  <div class="dash-grid">
-    <div class="stat">Total Scans<br><b>120</b></div>
-    <div class="stat">Detected Cases<br><b>45</b></div>
+  <div class="dash-row">
+    <div class="stat">Scans<br><b>120</b></div>
+    <div class="stat">Detected<br><b>45</b></div>
     <div class="stat">Accuracy<br><b>95%</b></div>
   </div>
 
 </section>
 
-<!-- HISTORY -->
+<!-- HISTORY (same but styled) -->
 <section id="history" class="history">
 
-  <h2>Scan History</h2>
+  <h2>History</h2>
 
   <div class="history-box">
-    <p>No scans yet...</p>
+    No scans yet
   </div>
 
 </section>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({ duration: 800, once: true });
+</script>
+
 <script src="script.js"></script>
 
 </body>
