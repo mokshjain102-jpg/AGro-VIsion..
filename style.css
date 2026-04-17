@@ -1,84 +1,61 @@
-/* RESET */
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:'Segoe UI',sans-serif;
+  font-family:sans-serif;
 }
 
-/* BACKGROUND */
 body{
-  background:url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6") no-repeat center/cover;
-  color:white;
-}
-
-body::before{
-  content:"";
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.7);
-  z-index:-1;
+  background:#000;
+  color:#fff;
 }
 
 /* NAV */
 nav{
   display:flex;
   justify-content:space-between;
-  padding:20px 40px;
-  background:rgba(0,0,0,0.5);
-  backdrop-filter:blur(10px);
+  padding:20px;
   position:fixed;
   width:100%;
+  background:rgba(0,0,0,0.7);
+  z-index:1000;
 }
 
-nav h2{color:#22c55e;}
-nav a{color:white;margin-left:20px;text-decoration:none;}
-
-/* HERO */
-.hero{
+/* PARALLAX */
+.parallax{
   height:100vh;
+  background:url("https://images.unsplash.com/photo-1464226184884-fa280b87c399") center/cover fixed;
   display:flex;
-  flex-direction:column;
   justify-content:center;
   align-items:center;
+  position:relative;
+}
+
+.overlay{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
+}
+
+.hero{
+  position:relative;
   text-align:center;
 }
 
 .hero h1{
   font-size:60px;
-  background:linear-gradient(to right,#22c55e,#06b6d4);
-  -webkit-background-clip:text;
-  color:transparent;
-  animation:fadeUp 1s ease;
-}
-
-@keyframes fadeUp{
-  from{transform:translateY(50px);opacity:0;}
-  to{transform:translateY(0);opacity:1;}
+  color:#22c55e;
 }
 
 /* BUTTON */
 button{
-  padding:12px 25px;
+  padding:10px 20px;
   background:#22c55e;
   border:none;
   border-radius:10px;
-  margin-top:20px;
+  margin-top:10px;
   cursor:pointer;
-  transition:0.3s;
-}
-
-button:hover{
-  transform:scale(1.1);
-}
-
-/* PARTICLES */
-#particles-js{
-  position:fixed;
-  width:100%;
-  height:100%;
-  z-index:-1;
 }
 
 /* FEATURES */
@@ -90,15 +67,15 @@ button:hover{
 }
 
 .card{
-  background:rgba(255,255,255,0.1);
-  backdrop-filter:blur(15px);
   padding:30px;
-  border-radius:15px;
+  background:rgba(255,255,255,0.1);
+  border-radius:10px;
+  text-align:center;
   transition:0.3s;
 }
 
 .card:hover{
-  transform:scale(1.05);
+  transform:scale(1.1);
 }
 
 /* WEATHER */
@@ -110,53 +87,27 @@ button:hover{
 /* UPLOAD */
 .upload{
   text-align:center;
-  padding:50px;
+  padding:40px;
 }
 
-.result{
-  margin-top:20px;
-  background:rgba(255,255,255,0.1);
-  padding:20px;
-  border-radius:10px;
-}
-
-/* DASHBOARD */
+/* DASH */
 #dash{
+  padding:40px;
   text-align:center;
-  padding:50px;
 }
 
-canvas{
-  max-width:400px;
-  margin:auto;
-}
-
-/* CHATBOT */
-#chatbot{
+/* CHAT */
+#chatbox{
   position:fixed;
   bottom:20px;
   right:20px;
   width:300px;
   background:#111;
+  padding:10px;
   border-radius:10px;
 }
 
-#chat-header{
-  background:#22c55e;
-  padding:10px;
-}
-
-#chat-body{
+#chatMessages{
   height:200px;
   overflow:auto;
-  padding:10px;
-}
-
-#chat-input{
-  display:flex;
-}
-
-#chat-input input{
-  flex:1;
-  padding:10px;
 }
