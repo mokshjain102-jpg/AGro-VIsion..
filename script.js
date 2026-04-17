@@ -1,111 +1,78 @@
-/* FULL RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+const imageInput = document.getElementById("imageInput");
+
+imageInput.addEventListener("change", function(e){
+  let file = e.target.files[0];
+
+  if (!file) return;
+
+  let img = document.createElement("img");
+  img.src = URL.createObjectURL(file);
+  img.style.width = "200px";
+
+  let upload = document.querySelector(".upload");
+  upload.innerHTML = "";
+  upload.appendChild(img);
+
+  simulateAI();
+});
+
+// DATA (IMPORTANT)
+const data = [
+  {
+    crop: "Wheat",
+    disease: "Leaf Rust",
+    cure: "Apply fungicide (Propiconazole)",
+    precaution: "Avoid excessive moisture"
+  },
+  {
+    crop: "Rice",
+    disease: "Blast Disease",
+    cure: "Use Tricyclazole spray",
+    precaution: "Control irrigation"
+  },
+  {
+    crop: "Tomato",
+    disease: "Early Blight",
+    cure: "Use Copper Fungicide",
+    precaution: "Rotate crops"
+  }
+];
+
+function simulateAI(){
+
+  document.getElementById("crop").innerText = "Analyzing...";
+  document.getElementById("disease").innerText = "Scanning...";
+  document.getElementById("cure").innerText = "Processing...";
+
+  setTimeout(() => {
+
+    let item = data[Math.floor(Math.random()*data.length)];
+
+    document.getElementById("crop").innerText = item.crop;
+    document.getElementById("disease").innerText = item.disease;
+    document.getElementById("cure").innerText = item.cure;
+
+    addInsights(item);
+    addHistory(item);
+
+  }, 2000);
 }
 
-/* BODY FIX */
-body {
-  font-family: 'Poppins', sans-serif;
-  background: #0f2027;
-  color: white;
-  overflow-x: hidden;
+// INSIGHTS BACK
+function addInsights(item){
+  let insights = document.getElementById("insights");
+
+  insights.innerHTML = `
+    <li>🌱 Crop Health: Moderate</li>
+    <li>🦠 Disease: ${item.disease}</li>
+    <li>⚠ Precaution: ${item.precaution}</li>
+    <li>📈 Yield Impact: 10-20%</li>
+  `;
 }
 
-/* REMOVE WHITE SIDE SPACE */
-html, body {
-  width: 100%;
-}
-
-/* NAV */
-.nav {
-  width: 100%;
-  padding: 15px 40px;
-  display: flex;
-  justify-content: space-between;
-  background: rgba(0,0,0,0.7);
-  position: fixed;
-  top: 0;
-  z-index: 1000;
-}
-
-/* HERO FULL WIDTH */
-.hero {
-  width: 100%;
-  height: 100vh;
-  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)),
-  url('https://images.unsplash.com/photo-1500382017468-9049fed747ef') center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  padding-left: 60px;
-}
-
-/* HERO TEXT */
-.hero h1 {
-  font-size: 90px;
-}
-
-/* STATS FIX */
-.stats {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  background: rgba(0,0,0,0.8);
-  padding: 20px;
-  font-weight: bold;
-}
-
-/* DASHBOARD */
-.dashboard {
-  padding: 60px;
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 20px;
-}
-
-/* CARDS FIX */
-.card {
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(12px);
-  border-radius: 12px;
-  padding: 20px;
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 0 20px #00ffcc;
-}
-
-/* BIG CARD */
-.large {
-  grid-column: span 2;
-}
-
-/* UPLOAD BOX */
-.upload {
-  border: 2px dashed #00ffcc;
-  padding: 25px;
-  text-align: center;
-  border-radius: 10px;
-}
-
-/* FEATURES */
-.features {
-  padding: 60px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 20px;
-}
-
-/* REMOVE WHITE FROM BOTTOM */
-.bottom {
-  background: rgba(0,0,0,0.8);
-  display: flex;
-  gap: 20px;
-  padding: 40px;
+// HISTORY BACK
+function addHistory(item){
+  let li = document.createElement("li");
+  li.innerText = `${item.crop} - ${item.disease}`;
+  document.getElementById("history").appendChild(li);
 }
