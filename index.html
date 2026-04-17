@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>AgroVision</title>
-
 <link rel="stylesheet" href="style.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
@@ -11,44 +10,58 @@
 <body>
 
 <header class="nav">
-  <h2>🌱 AgroVision</h2>
+  <div class="logo">🌱 AgroVision</div>
+
   <nav>
     <a href="#">Home</a>
-    <a href="#dash">Dashboard</a>
-    <a href="#weather">Weather</a>
-    <a href="#chat">AI Chat</a>
+    <a href="#">Insights</a>
+    <a href="#">History</a>
+    <a href="#">Weather</a>
+    <a href="#">AI Chat</a>
+    <a href="#">Contact</a>
   </nav>
+
+  <button class="ai-btn">AI Assistant</button>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-text">
+
+  <div class="hero-left">
     <h1>AgroVision</h1>
     <h2>Smart Farming. Smarter Future.</h2>
 
-    <button onclick="document.getElementById('imageInput').click()" class="scan-btn">
-      📸 Scan Crop
-    </button>
+    <p>AI powered crop & livestock intelligence for farmers.</p>
+
+    <div class="hero-actions">
+      <input type="file" id="imageInput" hidden>
+      <button class="scan-btn" onclick="document.getElementById('imageInput').click()">
+        📸 Scan Crop
+      </button>
+
+      <button class="demo-btn">▶ Watch Demo</button>
+    </div>
   </div>
+
 </section>
 
 <!-- STATS -->
-<section class="stats">
-  <div>95.6%<span>Accuracy</span></div>
-  <div>50K+<span>Farmers</span></div>
-  <div id="temp">--<span>Temp</span></div>
-  <div id="hum">--<span>Humidity</span></div>
-</section>
+<div class="stats">
+  <div><strong>95.6%</strong><span>AI Accuracy</span></div>
+  <div><strong>50K+</strong><span>Farmers</span></div>
+  <div><strong>28°C</strong><span>Temperature</span></div>
+  <div><strong>60%</strong><span>Humidity</span></div>
+  <div><strong>12</strong><span>Scans</span></div>
+</div>
 
 <!-- DASHBOARD -->
-<section id="dash" class="dashboard">
+<section class="dashboard">
 
-  <div class="card big">
+  <div class="card large">
     <h3>AI Prediction</h3>
 
-    <div class="upload" onclick="document.getElementById('imageInput').click()">
-      Click or Upload Image
-      <input type="file" id="imageInput" hidden>
+    <div class="upload">
+      Drag & Drop Image
     </div>
 
     <div class="result">
@@ -58,32 +71,39 @@
     </div>
   </div>
 
-  <div id="weather" class="card">
+  <div class="card">
     <h3>Weather</h3>
-    <p id="weatherText">Loading...</p>
+    <p>28°C</p>
+    <p>Partly Cloudy</p>
   </div>
 
   <div class="card">
-    <h3>Insights</h3>
+    <h3>Quick Insights</h3>
     <ul id="insights"></ul>
   </div>
 
   <div class="card">
-    <h3>History</h3>
+    <h3>Recent History</h3>
     <ul id="history"></ul>
   </div>
 
 </section>
 
-<!-- CHATBOT -->
-<div id="chat" class="chat-box">
-  <h3>🤖 AI Assistant</h3>
-  <div id="chatMessages"></div>
+<!-- FEATURES -->
+<section class="features">
 
-  <input id="chatInput" placeholder="Ask about crops...">
-  <button onclick="sendMessage()">Send</button>
-</div>
+  <h2>Everything You Need for Smart Farming</h2>
 
+  <div class="grid">
+    <div class="box">AI Crop Scan</div>
+    <div class="box">Smart Insights</div>
+    <div class="box">Weather</div>
+    <div class="box">History</div>
+    <div class="box">AI Assistant</div>
+    <div class="box">Crop Knowledge</div>
+  </div>
+
+</section>
 
 <!-- FOOTER -->
 <section class="bottom">
@@ -95,8 +115,8 @@
 
   <div class="contact">
     <h3>Contact</h3>
-    <p>📧 mokshjain102@gmail.com</p>
-    <p>📞 +91 8103707609</p>
+    <p>📧 agrovision@gmail.com</p>
+    <p>📞 +91 9876543210</p>
   </div>
 
 </section>
