@@ -28,7 +28,9 @@ header{
 display:flex;
 justify-content:space-between;
 padding:20px 40px;
-background:rgba(0,0,0,0.6);
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(255,255,255,0.2);
 position:sticky;
 top:0;
 }
@@ -39,6 +41,7 @@ margin:10px;
 text-decoration:none;
 cursor:pointer;
 font-weight:500;
+transition:0.3s;
 }
 
 nav a:hover{
@@ -55,15 +58,26 @@ align-items:center;
 text-align:center;
 }
 
-.hero h1{font-size:42px;}
+.hero h1{
+font-size:42px;
+background:linear-gradient(90deg,#00ff9d,#00c3ff);
+-webkit-background-clip:text;
+color:transparent;
+}
 
 .btn{
 margin-top:20px;
 padding:12px 25px;
-background:#4caf50;
+background:linear-gradient(45deg,#00ff9d,#00c3ff);
 border:none;
 color:white;
 cursor:pointer;
+border-radius:30px;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.1);
 }
 
 /* FEATURES */
@@ -78,7 +92,12 @@ flex-wrap:wrap;
 .card{
 background:rgba(255,255,255,0.1);
 padding:20px;
-border-radius:10px;
+border-radius:15px;
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-10px) scale(1.05);
 }
 
 /* DEMO */
@@ -103,20 +122,20 @@ transform:translate(-50%,-50%);
 background:white;color:black;
 padding:20px;border-radius:10px;
 }
+</style>
+</head>
 
-/* CHATBOT */
-
+<body>
 
 <header>
 <h2>🌱 AgroVision</h2>
 
-<!-- ✅ UPDATED NAVBAR -->
 <nav>
 <a onclick="scrollToSec('home')">Home</a>
 <a onclick="scrollToSec('demo')">Scan</a>
 <a onclick="scrollToSec('dashboard')">Dashboard</a>
 <a onclick="openLogin()">Login</a>
-<a href="chat.html">🤖 AI Chat</a> <!-- 🔥 YE ADD HUA HAI -->
+<a href="chat.html">🤖 AI Chat</a>
 </nav>
 
 </header>
@@ -128,10 +147,10 @@ padding:20px;border-radius:10px;
 </div>
 
 <div class="features">
-<div class="card">🌿 Detection</div>
-<div class="card">📊 Severity</div>
-<div class="card">🌦 Weather</div>
-<div class="card">💊 Treatment</div>
+<div class="card">🌿 Disease Detection</div>
+<div class="card">📊 Severity Analysis</div>
+<div class="card">🌦 Weather Risk</div>
+<div class="card">💊 Smart Treatment</div>
 </div>
 
 <div class="demo" id="demo">
@@ -160,8 +179,6 @@ padding:20px;border-radius:10px;
 <input type="password" placeholder="Password"><br><br>
 <button onclick="login()">Login</button>
 </div>
-
-
 
 <script>
 
@@ -215,49 +232,7 @@ list.appendChild(li);
 function openLogin(){document.getElementById("loginBox").style.display="block";}
 function login(){alert("Login Success");document.getElementById("loginBox").style.display="none";}
 
-// CHAT
-function handleKey(e){
-if(e.key==="Enter"){
-handleVoice(document.getElementById("chat-input").value);
-document.getElementById("chat-input").value="";
-}
-}
-
-function handleVoice(msg){
-msg=msg.toLowerCase();
-addMsg("You: "+msg);
-
-let reply="Upload image for better result.";
-
-if(msg.includes("blight")) reply="Fungicide use karein.";
-else if(msg.includes("yellow")) reply="Nitrogen fertilizer use karein.";
-else if(msg.includes("leaf")) reply="Leaves remove karein.";
-else if(msg.includes("weather")) reply="Humidity se risk badhta hai.";
-
-addMsg("Bot: "+reply);
-
-let speech=new SpeechSynthesisUtterance(reply);
-speech.lang="hi-IN";
-speechSynthesis.speak(speech);
-}
-
-// VOICE
-function startVoice(){
-const rec=new (window.SpeechRecognition||window.webkitSpeechRecognition)();
-rec.lang="hi-IN";
-rec.start();
-rec.onresult=e=>handleVoice(e.results[0][0].transcript);
-}
-
-// UI
-function addMsg(t){
-let box=document.getElementById("chat-box");
-let div=document.createElement("div");
-div.innerText=t;
-box.appendChild(div);
-box.scrollTop=box.scrollHeight;
-}
-
+// SCROLL
 function scrollToSec(id){
 document.getElementById(id).scrollIntoView({behavior:"smooth"});
 }
