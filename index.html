@@ -4,65 +4,86 @@
 <meta charset="UTF-8">
 <title>AgroVision</title>
 <link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<header class="navbar">
-  <h1>🌱 AgroVision</h1>
+<header class="nav">
+  <div class="logo">🌱 AgroVision</div>
+
   <nav>
-    <a>Home</a>
-    <a>Insights</a>
-    <a>History</a>
-    <a>Weather</a>
-    <a>AI Chat</a>
-    <a>Contact</a>
+    <a href="#">Home</a>
+    <a href="#">Insights</a>
+    <a href="#">History</a>
+    <a href="#">Weather</a>
+    <a href="#">AI Chat</a>
+    <a href="#">Contact</a>
   </nav>
+
+  <button class="ai-btn">AI Assistant</button>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-content">
+
+  <div class="hero-left">
     <h1>AgroVision</h1>
-    <p>Smart Farming. Smarter Future.</p>
+    <h2>Smart Farming. Smarter Future.</h2>
 
-    <button class="scan-btn">📸 Scan Crop</button>
+    <p>AI powered crop & livestock intelligence for farmers.</p>
+
+    <div class="hero-actions">
+      <input type="file" id="imageInput" hidden>
+      <button class="scan-btn" onclick="document.getElementById('imageInput').click()">
+        📸 Scan Crop
+      </button>
+
+      <button class="demo-btn">▶ Watch Demo</button>
+    </div>
   </div>
+
 </section>
 
-<!-- STATS BAR -->
-<section class="stats">
-  <div>95.6% <span>Accuracy</span></div>
-  <div>50K+ <span>Users</span></div>
-  <div>28°C <span>Temp</span></div>
-  <div>60% <span>Humidity</span></div>
-  <div>12 <span>Scans</span></div>
-</section>
+<!-- STATS -->
+<div class="stats">
+  <div><strong>95.6%</strong><span>AI Accuracy</span></div>
+  <div><strong>50K+</strong><span>Farmers</span></div>
+  <div><strong>28°C</strong><span>Temperature</span></div>
+  <div><strong>60%</strong><span>Humidity</span></div>
+  <div><strong>12</strong><span>Scans</span></div>
+</div>
 
-<!-- MAIN CARDS -->
-<section class="cards-section">
+<!-- DASHBOARD -->
+<section class="dashboard">
 
-  <div class="card big">
+  <div class="card large">
     <h3>AI Prediction</h3>
-    <input type="file" id="imageInput">
-    <p id="crop">--</p>
-    <p id="disease">--</p>
-    <p id="cure">--</p>
+
+    <div class="upload">
+      Drag & Drop Image
+    </div>
+
+    <div class="result">
+      <p>Crop: <span id="crop">--</span></p>
+      <p>Disease: <span id="disease">--</span></p>
+      <p>Cure: <span id="cure">--</span></p>
+    </div>
   </div>
 
   <div class="card">
     <h3>Weather</h3>
     <p>28°C</p>
+    <p>Partly Cloudy</p>
   </div>
 
   <div class="card">
-    <h3>Insights</h3>
-    <p>High Yield Expected</p>
+    <h3>Quick Insights</h3>
+    <ul id="insights"></ul>
   </div>
 
   <div class="card">
-    <h3>History</h3>
+    <h3>Recent History</h3>
     <ul id="history"></ul>
   </div>
 
@@ -70,29 +91,36 @@
 
 <!-- FEATURES -->
 <section class="features">
-  <h2>Everything You Need</h2>
+
+  <h2>Everything You Need for Smart Farming</h2>
 
   <div class="grid">
-    <div class="box">AI Scan</div>
-    <div class="box">Insights</div>
+    <div class="box">AI Crop Scan</div>
+    <div class="box">Smart Insights</div>
     <div class="box">Weather</div>
     <div class="box">History</div>
-    <div class="box">AI Chat</div>
-    <div class="box">Knowledge</div>
+    <div class="box">AI Assistant</div>
+    <div class="box">Crop Knowledge</div>
   </div>
+
 </section>
 
-<!-- ABOUT -->
-<section class="about">
-  <h2>About AgroVision</h2>
-  <p>AI powered farming solution for better crop management.</p>
+<!-- FOOTER -->
+<section class="bottom">
+
+  <div class="about">
+    <h3>About AgroVision</h3>
+    <p>AI-driven farming platform improving productivity and sustainability.</p>
+  </div>
+
+  <div class="contact">
+    <h3>Contact</h3>
+    <p>📧 agrovissionmoksh@gmail.com</p>
+    <p>📞 +91 8103707609</p>
+  </div>
+
 </section>
 
-<!-- CONTACT -->
-<section class="contact">
-  <h2>Contact</h2>
-  <p>Email: agrovision@gmail.com</p>
-</section>
-
+<script src="script.js"></script>
 </body>
 </html>
